@@ -1,67 +1,15 @@
 
 #include "Contact.hpp"
-//
-//
-bool	check_printable(std ::string s)
-{
-	int	size(s.size());
-	for (int i=0;s[i] < size;i++)
-	{
-		if (!(std:: isprint(s[i])))
-			return (1);
-	}
-	return (0);
-}
-void	print_non_printable(void)
-{
-	std:: cout << "your input contain nonprintable ascii\n"
-				<< "you must input printable ascii\n";
-}
-void	Contact ::add_contact(void)
-{
-	std ::cout << "please input first name\n";
-	std ::cin >> first_name;
-	while (check_printable(first_name))
-	{
-		print_non_printable();
-		std ::cout << "please input first name\n";
-		std ::cin >> first_name;
-	}
-	std ::cout << first_name;
-	std ::cout << "please input last name\n";
-	std ::cin >> first_name;
-	while (last_name != ""){
-		std ::cout << "please input last name\n";
-		std ::cin >> first_name;
-	}
 
-	std ::cout << "please input nickname\n";
-	while (!(std ::cin >> nickname)){
-		std ::cout << "please input nickname\n";
-	}
+std::string&	Contact ::get_first_name(void){return(first_name);}
+std::string&	Contact ::get_last_name(void){return(last_name);}
+std::string&	Contact ::get_nickname(void){return(nickname);}
+std::string&	Contact ::get_phone_number(void){return(phone_number);}
+std::string&	Contact ::get_darkest_secret(void){return(darkest_secret);}
 
-	std ::cout << "please input phone number\n";
-	while (!(std ::cin >> phone_number)){
-		std ::cout << "please input phone number\n";
-	}
+void	Contact ::set_first_name(std::string s){first_name=s;}
+void	Contact ::set_last_name(std::string s){last_name=s;}
+void	Contact ::set_nickname(std::string s){nickname=s;}
+void	Contact ::set_phone_number(std::string s){phone_number=s;}
+void	Contact ::set_darkest_secret(std::string s){darkest_secret=s;}
 
-	std ::cout << "please input darkest secret\n";
-	while (!(std ::cin >> darkest_secret)){
-		std ::cout << "please input darkest secret\n";
-	}
-}
-
-void	Contact ::search_contact(void)
-{
-
-}
-
-void	Contact ::print_contact(void)
-{
-
-}
-
-void	Contact ::exit_contact(void)
-{
-
-}

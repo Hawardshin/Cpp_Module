@@ -3,7 +3,7 @@ CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 NAME = contact
 
-SRCS = Contact.cpp main.cpp
+SRCS = Contact.cpp main.cpp PhoneBook.cpp print.cpp
 
 RM = rm -rf
 

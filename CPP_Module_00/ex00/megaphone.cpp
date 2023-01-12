@@ -1,12 +1,29 @@
 
 #include <iostream>
 
+void	print_upper(std::string s)
+{
+	int size(s.size());
+	for (int i=0;i <size;i++)
+	{
+		if ('a'<=s[i]&& s[i] <='z')
+			std::cout <<(char)(s[i]^32);
+		else
+			std::cout << s[i];
+	}
+
+}
+
 int main(int argc,char **argv)
 {
 	if (argc == 1)
 		std ::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-	else if (argc == 2 && (std ::string)argv[1] == "shhhhh... I think the students are asleep...")
-		std ::cout << "SHHHHH... I THINK THE STUDENTS ARE ASLEEP...\n";
-	else if (argc == 4 && (std ::string)argv[1] == "Damnit"  && (std ::string)argv[2] == " ! " && (std ::string)argv[3] == "Sorry students, I thought this thing was off.")
-		std ::cout << "DAMNIT ! SORRY STUDENTS, I THOUGHT THIS THING WAS OFF.\n";
+	else
+	{
+		for (int i=1;i < argc; i++)
+		{
+			print_upper((std::string)argv[i]);
+		}
+		std::cout<< std::endl;
+	}
 }
