@@ -2,6 +2,7 @@
 # define MAIN_HPP
 
 #include "PhoneBook.hpp"
+#include <iomanip>
 
 void	print_not_valid(void);
 bool	check_printable(std ::string s);

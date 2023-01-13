@@ -14,7 +14,7 @@ class PhoneBook
 {
 	private :	int idx;
 				bool is_full;
-				Contact num_array[8];
+				Contact contact_array[8];
 
 	public :	void	print_each_col(int );
 				void	add_each_field(const std::string, std::string&);

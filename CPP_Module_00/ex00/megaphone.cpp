@@ -11,7 +11,6 @@ void	print_upper(std::string s)
 		else
 			std::cout << s[i];
 	}
-
 }
 
 int main(int argc,char **argv)
@@ -24,6 +23,6 @@ int main(int argc,char **argv)
 		{
 			print_upper((std::string)argv[i]);
 		}
-		std::cout<< std::endl;
+		std::cout<<std::endl;
 	}
 }

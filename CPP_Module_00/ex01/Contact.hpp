@@ -20,6 +20,7 @@ class Contact
 				void			set_nickname(std::string s);
 				void			set_phone_number(std::string s);
 				void			set_darkest_secret(std::string s);
+				void			show_all_info();
 
 };
 
