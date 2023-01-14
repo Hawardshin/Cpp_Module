@@ -4,7 +4,8 @@
 void	PhoneBook ::print_each_col(int i)
 {
 	std::cout << "|";
-	std::cout << "         "<<i+1<<"|";
+	std::cout << std::setfill (' ') << std::setw (10);
+	std::cout <<i+1<<"|";
 	::print_in_rule(contact_array[i].get_first_name());
 	::print_in_rule(contact_array[i].get_last_name());
 	::print_in_rule(contact_array[i].get_nickname());
