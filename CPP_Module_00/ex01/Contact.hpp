@@ -24,6 +24,4 @@ class Contact
 
 };
 
-
-
 #endif

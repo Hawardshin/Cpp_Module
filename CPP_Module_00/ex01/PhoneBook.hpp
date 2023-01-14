@@ -22,5 +22,4 @@ class PhoneBook
 				void	ft_cin(std::string&);
 				void	search_contact(void);
 };
-
 #endif

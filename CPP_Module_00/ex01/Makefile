@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME = contact
+NAME = SecretPhoneBook
 
 SRCS = Contact.cpp main.cpp PhoneBook.cpp print.cpp
 
@@ -18,7 +18,7 @@ $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) -o $@ -c $^
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
