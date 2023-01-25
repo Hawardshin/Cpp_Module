@@ -6,7 +6,8 @@ class Weapon
 {
 	private : std::string type;
 
-	public	: 	Weapon(std::string s) {type = s;}
+	public	:	Weapon(){type = "No weapon";}
+				Weapon(std::string s) {type = s;}
 				const std::string& getType();
 				void	setType(std::string);
 };

@@ -4,8 +4,8 @@ void	HumanA::attack(void){
 	std::cout << name <<  " attacks with their " << weapon.getType() << "\n";
 }
 
-HumanA::HumanA(std::string s, Weapon &w)
+HumanA::HumanA(std::string _name, Weapon &_weapon)
 {
-	name = s;
-	weapon = w;
+	name = _name;
+	weapon = _weapon;
 }
