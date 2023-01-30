@@ -1,15 +1,15 @@
 #ifndef HUMANB_HPP
 # define HUMANB_HPP
 # include "Weapon.hpp"
-
+//B는 무장하지 않을 수 있다.
 class HumanB{
 
 private :	Weapon weapon;
 			std::string name;
 
 public :	void	attack(void);
-			HumanB(std::string s){name = s;}
-			void	setWeapon(Weapon &we){ weapon = we;}
+			HumanB(const std::string&);
+			void	setWeapon(const Weapon &weapon_){ weapon = weapon_;}
 };
 
 #endif
