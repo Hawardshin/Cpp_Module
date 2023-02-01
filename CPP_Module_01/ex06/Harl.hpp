@@ -9,8 +9,9 @@ class Harl
 				void	info( void );
 				void	warning( void );
 				void	error( void );
+				void	invaild_level(void);
 
-	public :	void complain(std::string level);
+	public :	void	complain(std::string level);
 };
 
 #endif
