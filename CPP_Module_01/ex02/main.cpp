@@ -1,6 +1,6 @@
 
 #include <iostream>
-
+#include <string>
 int main()
 {
 	std::string s = "HI THIS IS BRAION";

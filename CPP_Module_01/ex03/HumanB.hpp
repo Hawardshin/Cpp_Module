@@ -4,11 +4,12 @@
 //B는 무장하지 않을 수 있다.
 class HumanB{
 
-private :	Weapon *weapon;
-			std::string name;
+private :	std::string name;
+			Weapon *weapon;
 
-public :	void	attack(void);
-			HumanB(const std::string&);
+
+public :	HumanB(const std::string&);
+			void	attack(void);
 			void	setWeapon(Weapon &weapon_);
 };
 

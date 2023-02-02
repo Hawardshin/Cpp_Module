@@ -1,20 +1,22 @@
 #include "Harl.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-	Harl h;
-	int case_n(0);
-	std::string	input;
-
 	std::string complain_arr[4]  ={
 		"DEBUG",
 		"INFO",
 		"WARNING",
 		"ERROR"
 	};
-	std::cout << "CHOOSE THE COMPLAIN\n";
-	for (int i(0);i<4;i++) std::cout <<i +1 << " : " <<  complain_arr[i] << "\n";
-	std::cin >> input;
+	if (argc != 2) {
+		std::cout << "CHOOSE THE COMPLAIN\n";
+	for (int i(0);i<4;i++) std::cout <<" - " <<  complain_arr[i] << "\n";
+		std::cout << "Arguments must be 2" << std::endl;
+		return 1;
+	}
+	Harl h;
+	int case_n(0);
+	std::string	input(argv[1]);
 	for (; case_n < 4;case_n++){
 		if (input == complain_arr[case_n])
 			break;
