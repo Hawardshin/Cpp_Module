@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	s1 = argv[2];
 	s2 = argv[3];
 	fs.open (argv[1], std::fstream::in);
-	if (fs.is_open() == false)
+	if (fs.fail())
 	{
 		std::cout<< "cannot_open file\n";
 		return (1);
