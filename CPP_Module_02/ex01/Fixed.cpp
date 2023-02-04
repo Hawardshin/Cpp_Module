@@ -7,20 +7,21 @@ Fixed::Fixed() :fixed_value_store(0) {
 Fixed::Fixed(int param){
 	fixed_value_store = param << fractional_bits_store;
 	std::cout << "Default constructor called\n";
-}//
+}
 
 Fixed::Fixed(float param){
 	std::cout << "Default constructor called\n";
 	fixed_value_store = roundf(param * (1 << fractional_bits_store));//what is mean
-}//
+}
 
 Fixed::Fixed(const Fixed& obj){
 	std::cout << "Copy constructor called\n";
 	*this = obj;
 }
+
 Fixed& Fixed::operator=(const Fixed& obj){
 	std::cout << "Copy assignment operator called\n";
-	fixed_value_store = obj.getRawBits(); //mean?
+	fixed_value_store = obj.getRawBits();
 	return (*this);
 }
 

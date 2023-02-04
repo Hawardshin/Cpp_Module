@@ -15,7 +15,6 @@ class Fixed{
 				Fixed(float);
 				Fixed(const Fixed& obj);
 				Fixed& operator=(const Fixed& obj);
-				// Fixed& operator<<(const Fixed& obj); //this is impossible why?
 				~Fixed();
 
 				float toFloat(void) const; //converts the fixed-point value to a floating-point value.
