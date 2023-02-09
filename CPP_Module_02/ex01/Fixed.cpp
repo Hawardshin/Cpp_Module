@@ -9,9 +9,10 @@ Fixed::Fixed(int param){
 	std::cout << "Default constructor called\n";
 }
 
+// roundf to use for accuracy
 Fixed::Fixed(float param){
 	std::cout << "Default constructor called\n";
-	fixed_value_store = roundf(param * (1 << fractional_bits_store));//what is mean
+	fixed_value_store = roundf(param * (1 << fractional_bits_store));
 }
 
 Fixed::Fixed(const Fixed& obj){
@@ -19,20 +20,13 @@ Fixed::Fixed(const Fixed& obj){
 	*this = obj;
 }
 
-Fixed& Fixed::operator=(const Fixed& obj){
-	std::cout << "Copy assignment operator called\n";
-	fixed_value_store = obj.getRawBits();
-	return (*this);
-}
-
-
 Fixed::~Fixed(){
 	std::cout << "Destructor called\n";
 }
 
 float Fixed:: toFloat(void) const
 {
-	return ((float)(fixed_value_store) / (1 << fractional_bits_store));
+	return (static_cast<float>(fixed_value_store) / (1 << fractional_bits_store));
 }
 
 int Fixed:: toInt(void) const
@@ -50,6 +44,12 @@ void Fixed::setRawBits( int const raw )
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	fixed_value_store = raw;
+}
+
+Fixed& Fixed::operator=(const Fixed& obj){
+	std::cout << "Copy assignment operator called\n";
+	fixed_value_store = obj.getRawBits();
+	return (*this);
 }
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& obj)
