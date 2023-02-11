@@ -13,17 +13,17 @@ class ClapTrap
 		int	Attack_damage;
 	public :
 		ClapTrap();
-		ClapTrap(std::string);
+		explicit ClapTrap(std::string);
 		ClapTrap(const ClapTrap& obj);
-		~ClapTrap();
+		virtual ~ClapTrap();
 		ClapTrap& operator=(const ClapTrap& obj);
 
 		void takeDamage(unsigned int amount);
 		void attack(const std::string& target);
 		void beRepaired(unsigned int amount);
 
-		std::string get_name();
-		unsigned int get_attack_damage();
+		std::string get_name() const;
+		unsigned int get_attack_damage() const;
 		bool use_energy_points();
 };
 

@@ -1,20 +1,14 @@
 # include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap() {
+ScavTrap::ScavTrap() : ClapTrap("anonymous",100,50,20) {
 	std::cout <<"[ScavTrap Default constructor called]\n" <<"You make " << name << "\n\n";
-	Hit_points = 100;
-	Energy_points = 50;
-	Attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(std::string name) :ClapTrap(name) {
+ScavTrap::ScavTrap(std::string name) :ClapTrap(name,100,50,20){
 	std::cout <<"[ScavTrap parameter constructor called]\n" <<"You make " << name << "\n\n";
-	Hit_points = 100;
-	Energy_points = 50;
-	Attack_damage = 20;
 }
-//this is need to understand
-ScavTrap::ScavTrap(const ScavTrap &obj) :ClapTrap()  {
+
+ScavTrap::ScavTrap(const ScavTrap &obj) :ClapTrap(obj.name,obj.Hit_points,obj.Energy_points,obj.Attack_damage)  {
 	std::cout<< "[ScavTrap Copy constructor called]\n" << "You make " << obj.name << "\n\n";
 	*this = obj;
 }

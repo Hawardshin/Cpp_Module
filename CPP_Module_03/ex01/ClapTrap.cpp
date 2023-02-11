@@ -9,6 +9,11 @@ ClapTrap:: ClapTrap(std::string name) : name(name),Hit_points(10),Energy_points(
 	std::cout << "[ClapTrap parameter constructor called]\n" <<"You make " << name << "\n\n";
 }
 
+ClapTrap:: ClapTrap(std::string name,unsigned int Hit_points, unsigned int Energy_points, int Attack_damage)
+:name(name),Hit_points(Hit_points),Energy_points(Energy_points),Attack_damage(Attack_damage){
+	std::cout << "[ClapTrap Constructor with all attributes called]\n\n";
+}
+
 ClapTrap:: ClapTrap(const ClapTrap& obj){
 	std::cout<< "[ClapTrap Copy constructor called]\n" << "You make " << obj.name << "\n\n";
 	*this = obj;
@@ -39,7 +44,6 @@ void ClapTrap:: takeDamage(unsigned int amount){
 void ClapTrap:: attack(const std::string& target){
 	if (use_energy_points()){
 		std::cout<<"ClapTrap "<< name <<" attacks "<< target<<", causing "<< Attack_damage<<" points of damage!\n\n";
-		// target.takeDamage(Attack_damage);
 	}
 }
 
@@ -66,5 +70,5 @@ bool ClapTrap:: use_energy_points(){
 	return (true);
 }
 
-std::string ClapTrap:: get_name(){return (name);}
-unsigned int ClapTrap::get_attack_damage(){return (Attack_damage);}
+std::string ClapTrap:: get_name() const{return (name);}
+unsigned int ClapTrap::get_attack_damage()const {return (Attack_damage);}
