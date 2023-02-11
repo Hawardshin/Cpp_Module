@@ -27,5 +27,4 @@ class ClapTrap
 		bool use_energy_points();
 };
 
-
 #endif

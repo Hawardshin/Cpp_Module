@@ -2,24 +2,24 @@
 # include "ClapTrap.hpp"
 
 ClapTrap:: ClapTrap() : name("anonymous"),Hit_points(10),Energy_points(10),Attack_damage(0){
-	std::cout <<"[Default constructor called]\n" <<"You make " << name << "\n\n";
+	std::cout <<"[ClapTrap Default constructor called]\n" <<"You make " << name << "\n\n";
 }
 
 ClapTrap:: ClapTrap(std::string name) : name(name),Hit_points(10),Energy_points(10),Attack_damage(0){
-	std::cout << "[parameter constructor called]\n" <<"You make " << name << "\n\n";
+	std::cout << "[ClapTrap parameter constructor called]\n" <<"You make " << name << "\n\n";
 }
 
 ClapTrap:: ClapTrap(const ClapTrap& obj){
-	std::cout<< "[Copy constructor called]\n" << "You make " << name << "\n\n";
+	std::cout<< "[ClapTrap Copy constructor called]\n" << "You make " << obj.name << "\n\n";
 	*this = obj;
 }
 
 ClapTrap:: ~ClapTrap(){
-	std::cout<< "[Destructor called]\n" << "extinguish " << name << "\n\n";
+	std::cout<< "[ClapTrap Destructor called]\n" << "extinguish " << name << "\n\n";
 }
 
 ClapTrap& ClapTrap:: operator=(const ClapTrap& obj){
-	std::cout << "[Copy assignment operator called]\n";
+	std::cout << "[ClapTrap Copy assignment operator called]\n";
 	name = obj.name;
 	Hit_points = obj.Hit_points;
 	Energy_points = obj.Energy_points;

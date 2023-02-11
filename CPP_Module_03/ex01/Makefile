@@ -5,6 +5,7 @@ NAME =	ClapTrap
 
 SRCS =	ClapTrap.cpp	\
 		main.cpp		\
+		ScavTrap.cpp	\
 
 RM = rm -rf
 

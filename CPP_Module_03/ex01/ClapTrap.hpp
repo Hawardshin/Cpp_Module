@@ -15,11 +15,11 @@ class ClapTrap
 		ClapTrap();
 		ClapTrap(std::string);
 		ClapTrap(const ClapTrap& obj);
-		~ClapTrap();
+		virtual ~ClapTrap();
 		ClapTrap& operator=(const ClapTrap& obj);
 
 		void takeDamage(unsigned int amount);
-		void attack(const std::string& target);
+		virtual void attack(const std::string& target);
 		void beRepaired(unsigned int amount);
 
 		std::string get_name();
