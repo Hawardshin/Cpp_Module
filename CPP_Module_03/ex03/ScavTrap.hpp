@@ -2,13 +2,13 @@
 # define SCAVTRAP_HPP
 # include "Claptrap.hpp"
 
-class ScavTrap : public ClapTrap
+class ScavTrap :  public virtual  ClapTrap
 {
 public:
 	ScavTrap();
-	ScavTrap(std::string);
+	explicit ScavTrap(std::string);
 	ScavTrap(const ScavTrap& obj );
-	~ScavTrap();
+	virtual ~ScavTrap();
 	ScavTrap& operator=(const ScavTrap& obj );
 
 	void guardGate();

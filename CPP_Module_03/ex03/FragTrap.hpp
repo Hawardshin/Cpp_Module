@@ -2,13 +2,13 @@
 # define FRAGTRAP_HPP
 # include "Claptrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap :  public virtual ClapTrap
 {
 public:
 	FragTrap();
-	FragTrap(std::string);
+	explicit FragTrap(std::string);
 	FragTrap(const FragTrap& obj );
-	~FragTrap();
+	virtual ~FragTrap();
 	FragTrap& operator=(const FragTrap& obj );
 
 	void highFivesGuys(void);
