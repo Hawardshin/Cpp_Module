@@ -8,7 +8,7 @@ public:
 	ScavTrap();
 	explicit ScavTrap(std::string);
 	ScavTrap(const ScavTrap& obj );
-	virtual ~ScavTrap();
+	~ScavTrap();//virtual?
 	ScavTrap& operator=(const ScavTrap& obj );
 
 	void guardGate();

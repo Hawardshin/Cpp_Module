@@ -6,7 +6,7 @@ class ScavTrap : public ClapTrap
 {
 public:
 	ScavTrap();
-	ScavTrap(std::string);
+	explicit ScavTrap(std::string);
 	ScavTrap(const ScavTrap& obj );
 	~ScavTrap();
 	ScavTrap& operator=(const ScavTrap& obj );

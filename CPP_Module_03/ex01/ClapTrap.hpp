@@ -7,10 +7,10 @@
 class ClapTrap
 {
 	protected :
-		std::string name;
-		unsigned int Hit_points; //max is 10 min is 0
+		std::string 	name;
+		unsigned int 	Hit_points; //max is 10 min is 0
 		unsigned int	Energy_points;////max is 10 min is 0
-		int	Attack_damage;
+		int				Attack_damage;
 	public :
 		ClapTrap();
 		explicit ClapTrap(std::string);

@@ -33,6 +33,5 @@ void ScavTrap::guardGate(){
 void ScavTrap::attack(const std::string& target){
 	if (use_energy_points()){
 		std::cout<<"ScavTrap "<< name <<" attacks "<< target<<", causing "<< Attack_damage<<" points of damage!\n\n";
-		// target.takeDamage(Attack_damage);
 	}
 }

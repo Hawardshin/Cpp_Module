@@ -1,14 +1,20 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap() :ClapTrap(), FragTrap(), ScavTrap()
 {
 	name="anonymous_clap_name";
+	Hit_points = 100;
+	Energy_points = 50;
+	Attack_damage = 30;
 	std::cout <<"[DiamondTrap Default constructor called]\n" <<"You make " << name << "\n\n";
 }
 
-DiamondTrap::DiamondTrap(std::string name) :  FragTrap(name),ScavTrap(name), name(ClapTrap::name+"_clap_name")
+DiamondTrap::DiamondTrap(std::string name) :  ClapTrap(name),FragTrap(),ScavTrap(), name(ClapTrap::name+"_clap_name")
 {
-	std::cout <<"[DiamondTrap parameter constructor called]\n" <<"You make " << name << "\n\n";
+	Hit_points = 100;
+	Energy_points = 50;
+	Attack_damage = 30;
+	std::cout <<"[DiamondTrap parameter constructor called]\n" <<"You make " << DiamondTrap::name << "\n\n";
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &obj){
@@ -26,7 +32,7 @@ DiamondTrap::~DiamondTrap(){
 
 void DiamondTrap::whoAmI(){
 	std::cout << "Dia name : " << name << "\n"
-	<< "Clap name" << ClapTrap::name;
+	<< "Clap name : " << ClapTrap::name << "\n\n";
 }
 
 void DiamondTrap::attack(const std::string& target){

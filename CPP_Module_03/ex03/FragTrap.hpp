@@ -8,7 +8,7 @@ public:
 	FragTrap();
 	explicit FragTrap(std::string);
 	FragTrap(const FragTrap& obj );
-	virtual ~FragTrap();
+	~FragTrap();//don't need virtual?
 	FragTrap& operator=(const FragTrap& obj );
 
 	void highFivesGuys(void);
