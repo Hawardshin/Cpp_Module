@@ -2,7 +2,7 @@
 #include "Animal.hpp"
 
 Animal:: Animal():type("Animal"){
-	std::cout <<"[Animal Default constructor called]\n";
+	std::cout <<"[Animal Default constructor called]\n\n";
 }
 
 Animal:: Animal(std::string type_) : type(type_){
@@ -22,4 +22,12 @@ Animal& Animal::operator=(const Animal & obj){
 
 Animal:: ~Animal(){
 	std::cout<< "[Animal Destructor called]\n" << "extinguish " << type << "\n\n";
+}
+
+void Animal:: makeSound() const{
+	std::cout << "[Animal CANNOT make sound Yet]\n\n";
+}
+
+std::string Animal:: getType() const{
+	return (type);
 }

@@ -1,10 +1,15 @@
 #pragma once
 
-#include "Animal.hpp"
+# include "Animal.hpp"
+class Cat : virtual public Animal
+{
+	private:
 
-class cat {
-	private :
-
-	public :
-
+	public:
+		Cat();
+		Cat(const Cat& obj );
+		~Cat();
+		Cat& operator=(const Cat& obj );
+		void makeSound() const;
 };
+

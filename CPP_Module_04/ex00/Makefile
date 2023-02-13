@@ -1,15 +1,14 @@
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME =	ClapTrap
+NAME =	Animal
 
-SRCS =	Animal.cpp	\
-		Animal.hpp	\
-		Cat.cpp		\
-		Cat.hpp		\
-		Dog.cpp		\
-		Dog.hpp		\
-		main.cpp	\
+SRCS =	Animal.cpp		\
+		Cat.cpp			\
+		Dog.cpp			\
+		main.cpp		\
+		WrongAnimal.cpp	\
+		WrongCat.cpp	\
 
 RM = rm -rf
 

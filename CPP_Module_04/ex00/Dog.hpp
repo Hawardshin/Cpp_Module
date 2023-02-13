@@ -1,9 +1,13 @@
 #pragma once
 #include "Animal.hpp"
 
-class Dog : public Animal{
+class Dog : virtual public Animal{
 	private :
 
 	public :
-		void	makeSound();
+		Dog();
+		Dog(const Dog& obj );
+		~Dog();
+		Dog& operator=(const Dog& obj );
+		void makeSound() const;
 };
