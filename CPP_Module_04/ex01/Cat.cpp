@@ -6,6 +6,12 @@ Cat::Cat() : Animal("Cat")
 	std::cout <<"[Cat Default constructor called]\n" <<"You make " << type << "\n\n";
 }
 
+Cat:: Cat(const Brain *Brainptr_) : Animal("Cat")
+{
+	Brainptr = new Brain(*Brainptr_);
+	std::cout <<"[Cat with Brain parameter constructor called]\n\n";
+}
+
 Cat::Cat(const Cat &obj) {
 	std::cout<< "[Cat Copy constructor called]\n" << "You make " << obj.type << "\n\n";
 	*this = obj;

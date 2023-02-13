@@ -15,11 +15,20 @@ Brain::Brain(const Brain &obj) {
 }
 
 Brain::~Brain() {
-	std::cout <<"[Brain Destructor called]\n" <<"extinguish " << ideas << "\n\n";
+	std::cout <<"[Brain Destructor called]\n" <<"extinguish Brain\n\n";
 }
 
 Brain& Brain::operator=(const Brain& obj){
 	std::cout <<"[Brain Copy assignment operator called]\n\n";
 	for (int i=0; i< 100;i++) ideas[i]=  obj.ideas[i];
 	return (*this);
+}
+
+void	Brain::speak_all_ideas(){
+	for (int i=0;i<100;i++)
+	{
+		std::cout << "ideas[" <<i << "] : " << ideas[i] << "| " ;
+		if (i+1 % 10 == 0)
+			std::cout << "\n";
+	}
 }

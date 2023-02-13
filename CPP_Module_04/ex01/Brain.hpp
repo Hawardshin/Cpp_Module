@@ -13,4 +13,6 @@ public:
 	Brain(const Brain& obj );
 	~Brain();
 	Brain& operator=(const Brain& obj );
+
+	void	speak_all_ideas();
 };
