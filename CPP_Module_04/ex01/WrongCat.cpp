@@ -13,7 +13,7 @@ WrongCat::~WrongCat() {
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& obj){
-	std::cout <<"[WrongCat Copy assignment operator called]\n\n";
+	std::cout << "[WrongCat Copy assignment operator called]\n";
 	type = obj.type;
 	return (*this);
 }

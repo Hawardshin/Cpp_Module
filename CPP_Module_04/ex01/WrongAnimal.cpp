@@ -18,7 +18,7 @@ WrongAnimal::~WrongAnimal() {
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& obj){
-	std::cout <<"[WrongAnimal Copy assignment operator called]\n" <<"extinguish " << type << "\n\n";
+	std::cout <<"[WrongAnimal Copy assignment operator called]\n\n";
 	type = obj.type;
 	return (*this);
 }
