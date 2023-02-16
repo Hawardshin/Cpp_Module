@@ -7,9 +7,9 @@ int main()
 {
 	{
 		std::cout << "-------------test 1--------------\n\n";
-		Animal a;
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
+		//Animal a;
 		delete j;//should not create a leak
 		delete i;
 		std::cout << "-------------test 1 done---------\n\n";
