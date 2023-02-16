@@ -4,7 +4,7 @@ WrongCat::WrongCat() :WrongAnimal("WrongCat"){
 	std::cout <<"[WrongCat Default constructor called]\n" <<"You make " << type << "\n\n";
 }
 
-WrongCat::WrongCat(const WrongCat &obj) {
+WrongCat::WrongCat(const WrongCat &obj) :WrongAnimal(obj.type){
 	std::cout <<"[WrongCat Copy constructor called]\n" <<"You make " << obj.type << "\n\n";
 }
 

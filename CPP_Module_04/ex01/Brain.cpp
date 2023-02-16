@@ -31,4 +31,5 @@ void	Brain::speak_all_ideas(){
 		if (i+1 % 10 == 0)
 			std::cout << "\n";
 	}
+	std::cout << "\n";
 }

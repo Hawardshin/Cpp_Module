@@ -12,7 +12,7 @@ Cat:: Cat(const Brain *Brainptr_) : Animal("Cat")
 	std::cout <<"[Cat with Brain parameter constructor called]\n\n";
 }
 
-Cat::Cat(const Cat &obj) {
+Cat::Cat(const Cat &obj) : Animal(obj.getType()){
 	std::cout<< "[Cat Copy constructor called]\n" << "You make " << obj.type << "\n\n";
 	*this = obj;
 }
@@ -25,10 +25,14 @@ Cat::~Cat() {
 Cat& Cat::operator=(const Cat& obj){
 	std::cout << "[Cat Copy assignment operator called]\n";
 	type = obj.type;
-	Brainptr = new Brain();
+	Brainptr = new Brain(*obj.Brainptr);
 	return (*this);
 }
 
 void Cat::makeSound() const{
 	std::cout << type << ": Meow, meow, meowwwwwww\n\n";
+}
+
+void	 Cat::see_brain(){
+	Brainptr->speak_all_ideas();
 }

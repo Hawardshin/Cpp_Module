@@ -36,15 +36,29 @@ int main()
 		Brain *brain_arr = new Brain(string_arr);
 		Cat A(brain_arr);
 		Cat B(A);
-		//shallow copy is if (I change brain_arr that effect other class)
 		Cat C= A;
+		//shallow copy is if (I change brain_arr that effect other class)
+		std::cout << "\n\n-----------first see---------------\n\n";
+		std::cout << "\n-----------A--------------\n";
+		A.see_brain();
+		std::cout << "\n-----------B--------------\n";
+		B.see_brain();
+		std::cout << "\n-----------C--------------\n";
+		C.see_brain();
+		std::cout << "\n\n-----------Second see---------------\n\n";
 		for (int i=0; i< 100;i++) string_arr[i] = "hello";
-		Brain *tmp = brain_arr;
+		Brain	*brain_tmp = brain_arr;
 		brain_arr = new Brain(string_arr);
-
-
+		std::cout << "\n-----------A--------------\n";
+		A.see_brain();
+		std::cout << "\n-----------B--------------\n";
+		B.see_brain();
+		std::cout << "\n-----------C--------------\n";
+		C.see_brain();
+		delete brain_arr;
+		delete brain_tmp;
 		std::cout << "-------------test 3 done---------\n\n";
 	}
 	//Don’t forget to check for memory leaks.
-	system("leaks Animal");
+	//system("leaks Animal");
 }
