@@ -37,11 +37,15 @@ void Bureaucrat:: check_except(int next_grade) const{
 void Bureaucrat::increment_grade(){
 	check_except(grade -1);
 	grade--;
+	std::cout << "<increment_grade>\n";
+	print_name_grade();
 }
 
 void Bureaucrat::decrement_grade(){
 	check_except(grade + 1);
 	grade++;
+	std::cout << "<decrement_grade>\n";
+	print_name_grade();
 }
 
 const std::string Bureaucrat::getName() const{ return (name); }
