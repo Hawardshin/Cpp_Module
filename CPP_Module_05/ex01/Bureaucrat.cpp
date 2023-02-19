@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-
+#include "Form.hpp"
 Bureaucrat::Bureaucrat() { }
 
 Bureaucrat::Bureaucrat(std::string name, int grade_) : name(name){
@@ -48,12 +48,20 @@ void Bureaucrat::decrement_grade(){
 	print_name_grade();
 }
 
-const std::string Bureaucrat::getName() const{ return (name); }
+std::string Bureaucrat::getName() const{ return (name); }
 
 int Bureaucrat::getGrade() const{ return (grade); }
 
 void Bureaucrat::print_name_grade() const {
 	std::cout << name << ", bureaucrat grade " << grade <<"\n\n";
+}
+
+void	Bureaucrat::signForm(Form &form_) const{//is this right prototype?
+	if (form_.getSign())
+		std::cout << "<bureaucrat> "<< name<<" signed <form> " << form_.getName() <<"\n";
+	else
+		std::cout << "<bureaucrat> "<< name<<" couldn’t sign <form> " << form_.getName() <<\
+		"because "<< "grade is not enough\n";
 }
 
 std::ostream & operator<< (std::ostream &os, const Bureaucrat& obj){

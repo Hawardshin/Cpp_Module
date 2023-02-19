@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <string>
+class Form;
+
 class Bureaucrat
 {
 private:
@@ -15,16 +17,16 @@ public:
 	class GradeTooLowException{};
 	explicit Bureaucrat(std::string name,int grade_);
 	Bureaucrat(const Bureaucrat& obj );
-	virtual ~Bureaucrat();
+	~Bureaucrat();
 	Bureaucrat& operator=(const Bureaucrat& obj );
 
-	void	check_except(int next_grade)const ;
-	void	increment_grade();
-	void	decrement_grade();
-	virtual const std::string getName() const;
-	int 	getGrade() const;
-	void	print_name_grade() const;
-	void	signForm();//
+	void		check_except(int next_grade)const ;
+	void		increment_grade();
+	void		decrement_grade();
+	std::string	getName() const;
+	int 		getGrade() const;
+	void		print_name_grade() const;
+	void		signForm(Form &form_) const;//
 };
 
 std::ostream & operator<< (std::ostream &os, const Bureaucrat& obj);

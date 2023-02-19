@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <exception>
 class Bureaucrat
 {
 private:
@@ -21,7 +22,7 @@ public:
 	void check_except(int next_grade)const ;
 	void	increment_grade();
 	void	decrement_grade();
-	const std::string getName() const;
+	std::string getName() const;
 	int 	getGrade() const;
 	void	print_name_grade() const;
 };

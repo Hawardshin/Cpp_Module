@@ -1,10 +1,11 @@
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME = Bureaucrat
+NAME = Form
 
-SRCS = Bureaucrat.cpp        \
-		main.cpp                \
+SRCS = Bureaucrat.cpp		\
+		Form.cpp			\
+		main.cpp			\
 
 RM = rm -rf
 

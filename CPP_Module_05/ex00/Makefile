@@ -3,8 +3,8 @@ CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 NAME = Bureaucrat
 
-SRCS = Bureaucrat.cpp        \
-		main.cpp                \
+SRCS = Bureaucrat.cpp	\
+		main.cpp		\
 
 RM = rm -rf
 

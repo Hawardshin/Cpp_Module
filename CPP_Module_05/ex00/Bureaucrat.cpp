@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() { }
+Bureaucrat::Bureaucrat() : name("") { }
 
 Bureaucrat::Bureaucrat(std::string name, int grade_) : name(name){
 	check_except(grade_);
@@ -48,9 +48,10 @@ void Bureaucrat::decrement_grade(){
 	print_name_grade();
 }
 
-const std::string Bureaucrat::getName() const{ return (name); }
+std::string Bureaucrat::getName() const{ return (name); }
 
 int Bureaucrat::getGrade() const{ return (grade); }
+
 
 void Bureaucrat::print_name_grade() const {
 	std::cout << name << ", bureaucrat grade " << grade <<"\n\n";
