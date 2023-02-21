@@ -61,5 +61,5 @@ int main()
 		std::cout << "-------------test 3 done---------\n\n";
 	}
 	//Don’t forget to check for memory leaks.
-	//system("leaks Animal");
+	system("leaks Animal");
 }

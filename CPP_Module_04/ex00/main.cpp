@@ -30,5 +30,6 @@ int main()
 		delete C;
 		std::cout << "\n-----------------test2-end------------\n\n";
 	}
+	system("leaks Animal");
 	return 0;
 }

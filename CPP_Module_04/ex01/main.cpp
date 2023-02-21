@@ -62,4 +62,5 @@ int main()
 	}
 	//Don’t forget to check for memory leaks.
 	//system("leaks Animal");
+	system("leaks Animal");
 }
