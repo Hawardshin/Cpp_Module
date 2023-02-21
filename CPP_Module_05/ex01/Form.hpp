@@ -9,19 +9,22 @@ class Form
 private:
 	const std::string name;
 	bool sign;
-	const int grade;
+	const int sign_grade;
+	const int exec_grade;
 	Form();
+
 public:
 	class GradeTooHighException {};
 	class GradeTooLowException {};
 
-	explicit Form(const std::string name,const int grade);
+	explicit Form(const std::string name,const int sign_grade,const int execgrade);
 	Form(const Form& obj );
 	~Form();
 	Form& operator=(const Form& obj );
 	std::string getName()const;
 	bool getSign()const;
-	int getGrade() const;
+	int getSignGrade()const;
+	int getExecGrade()const;
 
 	void	check_except(int next_grade)const ;
 	void	beSigned(Bureaucrat &obj);

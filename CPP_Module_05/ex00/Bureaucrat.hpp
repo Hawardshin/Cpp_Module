@@ -12,8 +12,12 @@ private:
 	Bureaucrat();
 
 public:
-	class GradeTooHighException{};
-	class GradeTooLowException{};
+	class GradeTooHighException: public std::exception{
+		const char* what(void) const throw();
+	};
+	class GradeTooLowException: public std::exception{
+		const char* what(void) const throw();
+	};
 	explicit Bureaucrat(std::string name,int grade_);
 	Bureaucrat(const Bureaucrat& obj );
 	~Bureaucrat();

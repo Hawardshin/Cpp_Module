@@ -23,8 +23,13 @@ Form::~Form() {
 Form& Form::operator=(const Form& obj){
 	std::cout << "Form Copy assignment operator called\n";
 	std::cout << "you can't change name so only grade change\n";
-	*this = obj;//is this ok? Bureaucrat need check
 	return (*this);
+	 if (this != &f) {
+		*(const_cast<std::string*>(&_name)) = f.getName();
+		*(const_cast<int*>(&_sign_grade)) = f.getSignGrade();
+		*(const_cast<int*>(&_exec_grade)) = f.getExecGrade();
+		_signed = f.getSigned();
+  }
 }
 void Form:: check_except(int next_grade) const{
 	if (next_grade > 150)

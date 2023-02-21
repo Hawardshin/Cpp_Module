@@ -2,6 +2,15 @@
 
 Bureaucrat::Bureaucrat() : name("") { }
 
+const char* Bureaucrat::GradeTooHighException:: what(void) const throw()
+{
+	return ("Bureaucrat Grade Too High");
+}
+
+const char* Bureaucrat::GradeTooLowException::what(void) const throw() {
+  return ("Bureaucrat Grade Too Low");
+}
+
 Bureaucrat::Bureaucrat(std::string name, int grade_) : name(name){
 	check_except(grade_);
 	grade = grade_;
