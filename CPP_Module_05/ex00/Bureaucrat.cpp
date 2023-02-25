@@ -1,13 +1,13 @@
 #include "Bureaucrat.hpp"
 
 /* public */
-Bureaucrat::Bureaucrat(const std::string&name, const int &grade) : name(name), grade(grade){
+Bureaucrat::Bureaucrat(const std::string&name, const int& grade) : name(name), grade(grade){
 	check_except(grade);
 	std::cout << "Bureaucrat Param constructor called\n";
 	print_name_grade();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &obj) : name(obj.getName()),grade(obj.getGrade()){
+Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.getName()),grade(obj.getGrade()){
 	std::cout <<"Bureaucrat Copy constructor called\n";
 	check_except(grade);
 	print_name_grade();
@@ -18,7 +18,7 @@ Bureaucrat::~Bureaucrat() {
 	print_name_grade();
 }
 
-void Bureaucrat:: check_except(const int &next_grade) const{
+void Bureaucrat:: check_except(const int& next_grade) const{
 	if (next_grade > 150)
 		throw GradeTooHighException();
 	if (next_grade < 1)
