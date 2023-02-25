@@ -67,6 +67,6 @@ const char* Bureaucrat::GradeTooLowException::what(void) const throw() {
 
 // operator overoading
 std::ostream & operator<< (std::ostream &os, const Bureaucrat& obj){
-	obj.print_name_grade();
+	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() <<"\n\n";
 	return (os);
 }

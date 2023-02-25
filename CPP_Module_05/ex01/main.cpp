@@ -13,10 +13,10 @@ int main()
 		std::cout << "Tom is ok\n\n";
 	}
 	catch(Form:: GradeTooHighException &obj){
-		std::cout << "!!!!!!!Too High\n\n";
+		std::cerr << "!!!!!!!Too High\n\n";
 	}
 	catch (Form:: GradeTooLowException &obj){
-		std::cout << "!!!!!!!Too low\n\n";
+		std::cerr << "!!!!!!!Too low\n\n";
 	}
 	try
 	{

@@ -9,7 +9,7 @@ Form::Form(const std::string name, const int grade) : name(name),sign(false), gr
 	print_name_grade();
 }
 
-Form::Form(const Form &obj) :name(obj.name) ,grade(obj.getGrade()){ //is this right?
+Form::Form(const Form& obj) :name(obj.name) ,grade(obj.getGrade()){ //is this right?
 	std::cout <<"Form Copy constructor called\n";
 	*this = obj;
 	print_name_grade();
@@ -33,7 +33,7 @@ void Form:: check_except(int next_grade) const{
 		throw GradeTooLowException();
 }
 
-void	Form::beSigned(Bureaucrat &obj){
+void	Form::beSigned(Bureaucrat& obj){
 	if (obj.getGrade() <= grade)
 	{
 		std::cout << "bureaucrat’s grade is high enough\n" << \

@@ -24,8 +24,8 @@ public:
 	virtual int getGrade() const = 0; // is this ok? virtaul to this fuction?
 
 	void	check_except(int next_grade)const ;
-	void	beSigned(Bureaucrat &obj);
+	void	beSigned(Bureaucrat& obj);
 	void	print_name_grade() const;
 };
 
-std::ostream & operator<<(std::ostream &os, const Form &obj);
+std::ostream & operator<<(std::ostream &os, const Form& obj);

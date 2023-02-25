@@ -14,7 +14,7 @@ int main()
 		std::cout << "Tom is ok\n\n";
 	}
 	catch(std::exception &e){
-		std::cout << e.what();
+		std::cerr << e.what();
 	}
 	std::cout <<"\n--------------------1-----------------\n";
 	try
@@ -25,7 +25,7 @@ int main()
 		std::cout << "MIKE is ok\n\n";
 	}
 	catch(std::exception &e){
-		std::cout << e.what();
+		std::cerr << e.what();
 	}
 	std::cout <<"\n--------------------2-----------------\n";
 	try
@@ -37,7 +37,7 @@ int main()
 		D.increment_grade();
 	}
 	catch(std::exception &e){
-		std::cout << e.what();
+		std::cerr << e.what();
 	}
 	std::cout <<"\n---------------------3----------------\n";
 	try
@@ -48,7 +48,7 @@ int main()
 		D.decrement_grade();
 	}
 	catch(std::exception &e){
-		std::cout << e.what();
+		std::cerr << e.what();
 	}
 	std::cout <<"\n---------------------4----------------\n";
 }
