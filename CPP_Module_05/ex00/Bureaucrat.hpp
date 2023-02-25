@@ -10,7 +10,7 @@ public:
 	Bureaucrat(const Bureaucrat& obj);
 	~Bureaucrat();
 
-	void 	check_except(int next_grade)const ;
+	void 	check_except(const int &next_grade)const ;
 	void	increment_grade();
 	void	decrement_grade();
 	const std::string &getName() const;

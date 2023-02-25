@@ -18,7 +18,7 @@ Bureaucrat::~Bureaucrat() {
 	print_name_grade();
 }
 
-void Bureaucrat:: check_except(int next_grade) const{
+void Bureaucrat:: check_except(const int &next_grade) const{
 	if (next_grade > 150)
 		throw GradeTooHighException();
 	if (next_grade < 1)
@@ -49,7 +49,6 @@ void Bureaucrat::print_name_grade() const {
 
 /* private */
 Bureaucrat::Bureaucrat() {}
-
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj){
 	std::cout << "Bureaucrat Copy assignment operator called\n";
