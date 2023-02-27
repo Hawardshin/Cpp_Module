@@ -1,5 +1,5 @@
 #include "Form.hpp"
-/* public */
+// public
 Form::Form(const std::string& name, const int& sign_grade,const int& exec_grade) : name(name), sign_grade(sign_grade),exec_grade(exec_grade),sign(false)
 {
 	check_except(*this);
@@ -23,7 +23,7 @@ const std::string& Form::getName() const{ return (name); }
 
 const int& Form::getSignGrade() const{ return (sign_grade); }
 
-const bool& Form::getExecGrade() const{ return (exec_grade); }
+const int& Form::getExecGrade() const{ return (exec_grade); }
 
 const bool& Form::getSign()const{return (sign);}
 
@@ -43,20 +43,17 @@ void Form::print_info() const {
 }
 
 void	Form::beSigned(const Bureaucrat& obj){
-	if (obj.getGrade() <= sign_grade)
-	{
-		std::cout << "bureaucrat’s grade is enough to sign\n" << \
-		"so changes the form status to signed\n";
+	if (obj.getGrade() <= sign_grade){
 		sign = true;
 	}
 	else{
 		throw GradeTooHighException();
 	}
-	obj.print_name_grade();
 }
 
-/* private */
-Form::Form(){}
+//private
+//this default constructor will not use
+Form::Form():name(""),sign_grade(1),exec_grade(1){}
 
 Form& Form::operator=(const Form& obj){
 	std::cout << "Form Copy assignment operator called\n";
@@ -65,11 +62,11 @@ Form& Form::operator=(const Form& obj){
 	return (*this);
 }
 
-const char* Form::GradeTooHighExcepthion::what() const throw(){
+const char* Form::GradeTooHighException::what() const throw(){
 	return ("Form Grade Too High\n");
 }
 
-const char* Form::GradeTooLowExcepthion::what() const throw(){
+const char* Form::GradeTooLowException::what() const throw(){
 	return ("Form Grade Too Low\n");
 }
 

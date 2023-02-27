@@ -15,10 +15,8 @@ public:
 	const int& getSignGrade()const;
 	const int& getExecGrade()const;
 	const bool& getSign()const;
-
-	void	check_except(const Form& obj) const;
-	void	print_info() const;
 	void	beSigned(const Bureaucrat& obj);
+
 
 private:
 	Form();
@@ -28,10 +26,12 @@ private:
 	bool sign;
 
 	Form& operator=(const Form& obj );
-	class GradeTooHighException : std::exception {
+	void	print_info() const;
+	void	check_except(const Form& obj) const;
+	class GradeTooHighException : public std::exception {
 		virtual const char* what() const throw() ;
 	};
-	class GradeTooLowException : std::exception {
+	class GradeTooLowException : public std::exception {
 		virtual const char* what() const throw() ;
 	};
 };

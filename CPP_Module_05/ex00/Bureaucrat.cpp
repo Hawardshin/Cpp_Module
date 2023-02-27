@@ -44,14 +44,14 @@ const std::string& Bureaucrat::getName() const{ return (name); }
 const int& Bureaucrat::getGrade() const{ return (grade); }
 
 void Bureaucrat::print_name_grade() const {
-	std::cout << name << ", bureaucrat grade " << grade <<"\n\n";
+  std::cout << name << ", bureaucrat grade " << grade <<"\n\n";
 }
 
 /* private */
 Bureaucrat::Bureaucrat() {}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj){
-	std::cout << "Bureaucrat Copy assignment operator called\n";
+  std::cout << "Bureaucrat Copy assignment operator called\n";
 	std::cout << "you can't change name so only grade change\n";
 	grade = obj.grade;
 	return (*this);

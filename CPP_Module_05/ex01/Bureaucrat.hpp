@@ -18,15 +18,14 @@ public:
 	void	decrement_grade();
 	const std::string& getName() const;
 	const int& getGrade() const;
+	void	signForm(Form& form);
 	void	print_name_grade() const;
-	void	signForm(const Form& form) const;
 private:
 	const std::string name;
 	Bureaucrat();
 
 	//because it has const member variable
 	Bureaucrat& operator=(const Bureaucrat& obj);
-
 	int grade; // highest is 1 lowest is 150
 	class GradeTooHighException: public std::exception{
 		virtual const char* what(void) const throw();

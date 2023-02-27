@@ -5,53 +5,46 @@ int main()
 {
 	try
 	{
-		Form A("Haward",1);
+		Form A("Haward",1,10);
 		std::cout << "Haward is ok\n\n";
-		Form B("Jack",150);
+		Form B("Jack",150,1);
 		std::cout << "Jack is ok\n\n";
-		Form C("Tom", 151);
+    std::cout << B;
+    Bureaucrat X("X-man",2);
+    X.signForm(A);
+    X.signForm(B);
+		Form C("Tom", 151,1);
 		std::cout << "Tom is ok\n\n";
 	}
-	catch(Form:: GradeTooHighException &obj){
-		std::cerr << "!!!!!!!Too High\n\n";
-	}
-	catch (Form:: GradeTooLowException &obj){
-		std::cerr << "!!!!!!!Too low\n\n";
-	}
+	catch(std::exception &e){
+    std::cerr << e.what();
+  }
+  std::cout << "-----------------------------------------------\n";
 	try
 	{
-		Form D("JJ",1);
+		Form D("JJ",1,10);
 		std::cout << "!!!!!!!JJ is ok\n\n";
-		Form E("MIKE", 0);
+		Form E("MIKE", 0,1);
 		std::cout << "!!!!!!!MIKE is ok\n\n";
 	}
-	catch(Form:: GradeTooHighException &obj){
-		std::cout << "!!!!!!!Too High\n";
-	}
-	catch (Form:: GradeTooLowException &obj){
-		std::cout << "!!!!!!!Too low\n";
-	}
+  catch(std:: exception &e){
+    e.what();
+  }
+  std::cout << "-----------------------------------------------\n";
 	try
 	{
-		Bureaucrat D("Dong",1);
+		Bureaucrat D("Dong",10);
 		std::cout << "D is ok\n\n";
-		Form X("XX",1);
+		Form X("XX",1,10);
+    Form Z("ZZ",5,10);
 		Bureaucrat Y("YY",2);
-		X.beSigned(Y);
 		Y.signForm(X);
-		X.beSigned(D);
-		Y.signForm(X);
+    Y.signForm(Z);
+    std::cout << D;
+    std::cout << X;
 	}
-	catch(Form:: GradeTooHighException &obj){
-		std::cout << "Form!!!!!!!Too High\n";
-	}
-	catch (Form:: GradeTooLowException &obj){
-		std::cout << "Form!!!!!!!Too low\n";
-	}
-	catch(Bureaucrat:: GradeTooHighException &obj){
-		std::cout << "Bureaucrat!!!!!!!Too High\n\n";
-	}
-	catch (Bureaucrat:: GradeTooLowException &obj){
-		std::cout << "Bureaucrat!!!!!!!Too low\n\n";
-	}
+  catch (std:: exception &e){
+    e.what();
+  }
+  std::cout << "-----------------------------------------------\n";
 }

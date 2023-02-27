@@ -48,18 +48,20 @@ void Bureaucrat::print_name_grade() const {
 	std::cout << name << ", bureaucrat grade " << grade <<"\n\n";
 }
 
-void	Bureaucrat::signForm(const Form& form_) const{
+void	Bureaucrat::signForm(Form& form_) {
 	try{
+    form_.beSigned(*this);
 		std::cout << "<bureaucrat> "<< name<<" signed <form> " << form_.getName() <<"\n";
 	} catch(std::exception& e)
 	{
 		std::cerr << "<bureaucrat> "<< name<<" couldn’t sign <form> " << form_.getName() <<\
-		"because "<< "grade is not enough\n";
+		" because "<< "grade is not enough\n";
 	}
 }
 
-/* private */
-Bureaucrat::Bureaucrat() {}
+//private
+//which don't use default constructor
+Bureaucrat::Bureaucrat(): name(""){}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj){
 	std::cout << "Bureaucrat Copy assignment operator called\n";
