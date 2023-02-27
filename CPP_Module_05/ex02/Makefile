@@ -3,12 +3,12 @@ CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 NAME = Form
 
-SRCS = Bureaucrat.cpp				\
-		Form.cpp					\
-		main.cpp					\
+SRCS = Bureaucrat.cpp						\
+		Form.cpp										\
+		main.cpp										\
 		PresidentialPardonForm.cpp	\
-		RobotomyRequestForm.cpp		\
-		ShrubberyCreationForm.cpp	\
+		RobotomyRequestForm.cpp			\
+		ShrubberyCreationForm.cpp		\
 
 RM = rm -rf
 

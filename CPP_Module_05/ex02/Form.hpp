@@ -6,26 +6,34 @@
 
 class Form
 {
-private:
-	const std::string name;
-	bool sign;
-	const int grade;
-	Form();
 public:
-	class GradeTooHighException {};
-	class GradeTooLowException {};
-
-	explicit Form(const std::string name,const int grade);
-	Form(const Form& obj );
+	Form(const std::string& name,const int& sign_grade,const int& execgrade);
+	Form(const Form& obj);
 	virtual ~Form();
-	Form& operator=(const Form& obj );
-	std::string getName()const;//is this right infront of getter const type?
-	bool getSign()const;
-	virtual int getGrade() const = 0; // is this ok? virtaul to this fuction?
 
-	void	check_except(int next_grade)const ;
-	void	beSigned(Bureaucrat& obj);
-	void	print_name_grade() const;
+	const std::string& getName()const;
+	const int& getSignGrade()const;
+	const int& getExecGrade()const;
+	const bool& getSign()const;
+	void	beSigned(const Bureaucrat& obj);
+  virtual void  execute(Bureaucrat const & executor) const = 0;
+
+private:
+	Form();
+	const std::string name;
+	const int sign_grade;
+	const int exec_grade;
+	bool sign;
+
+	Form& operator=(const Form& obj );
+	void	print_info() const;
+	void	check_except(const Form& obj) const;
+	class GradeTooHighException : public std::exception {
+		virtual const char* what() const throw() ;
+	};
+	class GradeTooLowException : public std::exception {
+		virtual const char* what() const throw() ;
+	};
 };
 
 std::ostream & operator<<(std::ostream &os, const Form& obj);
