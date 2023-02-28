@@ -62,6 +62,11 @@ Form& Form::operator=(const Form& obj){
 	return (*this);
 }
 
+void Form:: check_exectutable(const Bureacrat& e){
+  if (e.getGrade() <= exec_grade)
+
+}
+
 const char* Form::GradeTooHighException::what() const throw(){
 	return ("Form Grade Too High\n");
 }

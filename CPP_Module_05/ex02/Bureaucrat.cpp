@@ -48,7 +48,13 @@ void Bureaucrat::print_name_grade() const {
 	std::cout << name << ", bureaucrat grade " << grade <<"\n\n";
 }
 
-void  executeForm(Form const & form);
+void  executeForm(Form const & form){
+  try {
+
+  }catch(std::exception& e){
+
+  }
+}
 
 void	Bureaucrat::signForm(Form& form_) {
 	try{
@@ -57,7 +63,7 @@ void	Bureaucrat::signForm(Form& form_) {
 	} catch(std::exception& e)
 	{
 		std::cerr << "<bureaucrat> "<< name<<" couldn’t sign <form> " << form_.getName() <<\
-		" because "<< "grade is not enough\n";
+		" because "<< e.what() <<"\n";
 	}
 }
 

@@ -55,7 +55,7 @@ void	Bureaucrat::signForm(Form& form_) {
 	} catch(std::exception& e)
 	{
 		std::cerr << "<bureaucrat> "<< name<<" couldn’t sign <form> " << form_.getName() <<\
-		" because "<< "grade is not enough\n";
+		" because "<<e.what() <<"\n";
 	}
 }
 
