@@ -62,9 +62,15 @@ Form& Form::operator=(const Form& obj){
 	return (*this);
 }
 
-void Form:: check_exectutable(const Bureacrat& e){
-  if (e.getGrade() <= exec_grade)
-
+void Form:: check_exectutable(const Bureaucrat& e) const{
+  if (sign == false)
+    throw NotSigned();
+  if (e.getGrade() > exec_grade){//not executable
+    throw GradeTooHighException();
+  }
+  else if (e.getGrade() <=0){
+    throw GradeTooLowException();
+  }
 }
 
 const char* Form::GradeTooHighException::what() const throw(){
@@ -73,6 +79,10 @@ const char* Form::GradeTooHighException::what() const throw(){
 
 const char* Form::GradeTooLowException::what() const throw(){
 	return ("Form Grade Too Low\n");
+}
+
+const char* Form::NotSigned::what() const throw(){
+	return ("Form Not Signed\n");
 }
 
 std::ostream& operator<< (std::ostream &os, const Form& obj){

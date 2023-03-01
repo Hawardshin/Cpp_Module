@@ -6,23 +6,34 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string& name) :Form(na
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj):Form(obj.getName(), obj.getSignGrade(), obj.getExecGrade()){
-  std::cout <<"[PresidentialPardonForm Copy constructor called]\n" <<"You make " << obj.name  << "\n\n";
+  std::cout <<"[PresidentialPardonForm Copy constructor called]\n" <<"You make " << obj.getName()  << "\n\n";
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {
-  std::cout <<"[PresidentialPardonForm Destructor called]\n" <<"extinguish " << name  << "\n\n";
+  std::cout <<"[PresidentialPardonForm Destructor called]\n" <<"extinguish " << getName() << "\n\n";
 }
 
+//need other excetion like
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const{
+  try{
+      check_exectutable(executor);
+      std::cout <<"Informs that <target> "<< executor.getName() << "has been pardoned by Zaphod Beeblebrox.";
+  }
+  catch (std::exception &e){
+    std::cout << getName() << "\n" << e.what();
+  }
 }
 
 //private
-PresidentialPardonForm::PresidentialPardonForm() :Form(){
-  std::cout <<"[PresidentialPardonForm Default constructor called]\n" <<"You make " << name << "\n\n";
+PresidentialPardonForm::PresidentialPardonForm() :Form("", 25, 5){
+  std::cout <<"[PresidentialPardonForm Default constructor called]\n";
 }
 
+//I am not use but other how to do it?
+//how to change private base class member?
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj){
-  std::cout <<"[PresidentialPardonForm Copy assignment operator called]\n\n"
-  name  = obj.name;
+  // sign = obj.getSign();
+  (void)obj;
+  std::cout <<"[PresidentialPardonForm Copy assignment operator called]\n\n";
   return (*this);
 }
