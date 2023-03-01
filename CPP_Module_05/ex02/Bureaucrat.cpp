@@ -47,8 +47,12 @@ const int& Bureaucrat::getGrade() const{ return (grade); }
 void Bureaucrat::print_name_grade() const {
 	std::cout << name << ", bureaucrat grade " << grade <<"\n\n";
 }
-
-void  executeForm(Form const & form);
+//It must attempt to execute the form.
+//If it’s successful, print something like:
+//<bureaucrat> executed <form>
+void  executeForm(Form const & form){
+  
+}
 
 void	Bureaucrat::signForm(Form& form_) {
 	try{
