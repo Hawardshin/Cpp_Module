@@ -4,6 +4,9 @@
 //Makes some drilling noises.
 //Then, informs that <target> has been robotomized successfully 50% of the time.
 //Otherwise, informs that the robotomy failed.
+# include <cstdlib>
+# include <ctime>
+
 class RobotomyRequestForm:public Form {
 private:
     RobotomyRequestForm();

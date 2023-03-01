@@ -52,7 +52,8 @@ void Bureaucrat::print_name_grade() const {
 //<bureaucrat> executed <form>
 void Bureaucrat:: executeForm(const Form& form){
   try {
-    form.check_exectutable(*this);
+    // form.check_exectutable(*this);
+    form.execute(*this);
     std::cout << "<bureaucrat>" << name << "executed <form>"<< form.getName() << "\n";
   }catch(std::exception& e){
     std::cout << "<bureaucrat>" << name << "connot executed <form>"<< form.getName() << "\n";

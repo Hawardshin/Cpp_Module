@@ -20,9 +20,16 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const{
   try{
       check_exectutable(executor);
       std::cout << "zzzzzzz\n";
+      srand((unsigned int)time(NULL));//for seed get it
+      if (std::random() % 2 == 0){
+        std::cout << "<target> " << executor.getName()<<"has been robotomized successfully\n\n";
+      }
+      else{
+         std::cout << "<target> " << executor.getName()<<"has been robotomized failly\n\n";
+      }
   }
   catch (std::exception &e){
-    std::cout << getName() << "\n" << e.what();
+    std::cout << getName() << " cannot execute"<< "\n" << e.what();
   }
 }
 
