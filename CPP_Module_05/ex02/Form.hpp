@@ -28,6 +28,7 @@ private:
 	Form& operator=(const Form& obj );
 	void	print_info() const;
 	void	check_except(const Form& obj) const;
+  void  check_exectutable(const Bureacrat& e);
 	class GradeTooHighException : public std::exception {
 		virtual const char* what() const throw() ;
 	};
