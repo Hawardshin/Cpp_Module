@@ -20,7 +20,7 @@ int main()
 
   Form *F1 = new PresidentialPardonForm("PRESIDENT");
   Form *F2 = new RobotomyRequestForm("ROBOT");
-  Form *F3 = new ShrubberyCreationForm("SHRUBBERY");
+  Form *F3 = new ShrubberyCreationForm("HOME");
   std::cout << "--------------------------------2----------------------------\n\n";
   std::cout << F1 << "\n" << F2 << "\n" << F3 << "\n";
   std::cout << *F1 << "\n" << *F2 << "\n" << *F3 << "\n";
