@@ -21,9 +21,9 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const{
   std::cout << "zzzzzzz\n";
   srand((unsigned int)time(NULL));//for seed change by time
   if (std::rand() % 2 == 0){
-    std::cout << "<target> " << executor.getName()<<"has been robotomized successfully\n\n";
+    std::cout << "<target> " << executor.getName()<<" has been robotomized successfully\n\n";
   } else{
-      std::cout << "<target> " << executor.getName()<<"has been robotomized failly\n\n";
+      std::cout << "<target> " << executor.getName()<<" has been robotomized failly\n\n";
   }
 }
 
@@ -32,10 +32,8 @@ RobotomyRequestForm::RobotomyRequestForm() :Form("", 72, 45){
   std::cout <<"[RobotomyRequestForm Default constructor called]\n";
 }
 
-//I am not use but other how to do it?
-//how to change private base class member?
+//I am not use it
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj){
-  // sign = obj.getSign();
   (void)obj;
   std::cout <<"[RobotomyRequestForm Copy assignment operator called]\n\n";
   return (*this);

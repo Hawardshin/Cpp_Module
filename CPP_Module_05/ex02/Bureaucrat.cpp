@@ -54,9 +54,9 @@ void Bureaucrat::print_name_grade() const {
 void Bureaucrat:: executeForm(const Form& form){
   try {
     form.execute(*this);//in execute fuc check executable
-    std::cout << "<bureaucrat>" << name << "executed <form>"<< form.getName() << "\n";
+    std::cout << "<bureaucrat> " << name << " executed <form> "<< form.getName() << "\n";
   }catch(std::exception& e){
-    std::cout << "<bureaucrat>" << name << "connot executed <form>"<< form.getName() << "\n" << e.what() << "\n";
+    std::cout << "<bureaucrat> " << name << " connot executed <form> "<< form.getName() << "\n" << e.what() << "\n";
   }
 }
 

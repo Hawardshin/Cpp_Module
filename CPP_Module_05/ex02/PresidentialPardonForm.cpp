@@ -16,7 +16,7 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 //this fuction throw exception so must wrapping
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const{
     check_exectutable(executor);
-    std::cout <<"Informs that <target> "<< executor.getName() << "has been pardoned by Zaphod Beeblebrox.";
+    std::cout <<"Informs that <target> "<< executor.getName() << " has been pardoned by Zaphod Beeblebrox.\n\n";
 }
 
 //private
