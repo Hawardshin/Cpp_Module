@@ -14,13 +14,13 @@ Form* Interns::makeForm(std::string form_name, std::string form_target){
   int i;
   Form* form = NULL;
   for(i=0;i < 3;i++)
-  (
+  {
     if (form_name == Form_array[i])
     {
       std::cout << "Intern creates <form>" << form_name << " ( " << form_target<<" ) "<< "\n\n";
       break;
     }
-  )
+  }
   switch(i)
   {
     case 0 : form = new PresidentialPardonForm(form_target);
@@ -36,12 +36,12 @@ Form* Interns::makeForm(std::string form_name, std::string form_target){
 
 //private
 Interns::Interns(const Interns &obj) {
-  static_cast<void> obj;
+  static_cast<void>(obj);
   std::cout <<"[Interns Copy constructor called]\n\n";
 }
 
 Interns& Interns::operator=(const Interns& obj){
-  std::cout <<"[Interns Copy assignment operator called]\n\n"
-  static_cast<void> obj;
+  std::cout <<"[Interns Copy assignment operator called]\n\n";
+  static_cast<void>(obj);
   return (*this);
 }

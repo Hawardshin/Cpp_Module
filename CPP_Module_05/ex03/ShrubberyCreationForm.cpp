@@ -62,7 +62,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() :Form("", 72, 45){
 //how to change private base class member?
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj){
   // sign = obj.getSign();
-  static_cast<void>;
+  static_cast<void>(obj);
   std::cout <<"[ShrubberyCreationForm Copy assignment operator called]\n\n";
   return (*this);
 }

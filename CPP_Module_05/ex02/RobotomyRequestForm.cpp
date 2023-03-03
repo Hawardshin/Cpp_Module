@@ -34,7 +34,7 @@ RobotomyRequestForm::RobotomyRequestForm() :Form("", 72, 45){
 
 //I am not use it
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj){
-  static_cast<void>;
+  static_cast<void>(obj);
   std::cout <<"[RobotomyRequestForm Copy assignment operator called]\n\n";
   return (*this);
 }

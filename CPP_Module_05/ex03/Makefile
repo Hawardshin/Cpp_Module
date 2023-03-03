@@ -9,6 +9,7 @@ SRCS = Bureaucrat.cpp						\
 		PresidentialPardonForm.cpp	\
 		RobotomyRequestForm.cpp			\
 		ShrubberyCreationForm.cpp		\
+		Interns.cpp									\
 
 RM = rm -rf
 

@@ -28,7 +28,7 @@ PresidentialPardonForm::PresidentialPardonForm() :Form("", 25, 5){
 //how to change private base class member?
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj){
   // sign = obj.getSign();
-  static_cast<void>;
+  static_cast<void>(obj);
   std::cout <<"[PresidentialPardonForm Copy assignment operator called]\n\n";
   return (*this);
 }

@@ -3,8 +3,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-class Interns
-{
+class Interns{
 public:
     Interns();
     ~Interns();
