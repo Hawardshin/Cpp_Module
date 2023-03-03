@@ -47,16 +47,16 @@ const int& Bureaucrat::getGrade() const{ return (grade); }
 void Bureaucrat::print_name_grade() const {
 	std::cout << name << ", bureaucrat grade " << grade <<"\n\n";
 }
+
 //It must attempt to execute the form.
 //If it’s successful, print something like:
 //<bureaucrat> executed <form>
 void Bureaucrat:: executeForm(const Form& form){
   try {
-    // form.check_exectutable(*this);
-    form.execute(*this);
+    form.execute(*this);//in execute fuc check executable
     std::cout << "<bureaucrat>" << name << "executed <form>"<< form.getName() << "\n";
   }catch(std::exception& e){
-    std::cout << "<bureaucrat>" << name << "connot executed <form>"<< form.getName() << "\n";
+    std::cout << "<bureaucrat>" << name << "connot executed <form>"<< form.getName() << "\n" << e.what() << "\n";
   }
 }
 

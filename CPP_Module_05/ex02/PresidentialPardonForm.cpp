@@ -13,15 +13,10 @@ PresidentialPardonForm::~PresidentialPardonForm() {
   std::cout <<"[PresidentialPardonForm Destructor called]\n" <<"extinguish " << getName() << "\n\n";
 }
 
-//need other excetion like
+//this fuction throw exception so must wrapping
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const{
-  try{
-      check_exectutable(executor);
-      std::cout <<"Informs that <target> "<< executor.getName() << "has been pardoned by Zaphod Beeblebrox.";
-  }
-  catch (std::exception &e){
-    std::cout << getName() << "\n" << e.what();
-  }
+    check_exectutable(executor);
+    std::cout <<"Informs that <target> "<< executor.getName() << "has been pardoned by Zaphod Beeblebrox.";
 }
 
 //private
