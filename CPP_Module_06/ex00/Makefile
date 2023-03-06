@@ -3,7 +3,8 @@ CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 NAME = convert
 
-SRCS = main.cpp		\
+SRCS = main.cpp							\
+			 ScalarConverter.cpp	\
 
 RM = rm -rf
 
