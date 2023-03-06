@@ -2,29 +2,31 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-//origin string is compare by after convert string
-//is this ok nan and inf go to strtod fuc what is return?
-//can i check this input to use isnan or isinf? test go
-//char :
-//int :
-//float :
-//double : when I start fuc use strtod(str); and check it is printable
-//strtod() var to back string use ostringstream if it is diff fail first
-
-//it is static class so I will init origin string in convert fuc
+#include <limits>
+ typedef struct s_printable{
+    bool  double_flag;
+    bool  char_flag;
+    bool  int_flag;
+    bool  float_flag;
+  }t_printable;
+typedef struct s_data{
+  int int_data;
+  char char_data;
+  float float_data;
+  double double_data;
+}t_data;
 
 class ScalarConverter
 {
 public:
-  static std::string my_dtos(const double& num_);
-  static bool  is_convertible(const char* param);
   static void convert(const std::string& param);
   ~ScalarConverter();
 
 private:
-  static std::string s_origin_str_;
   ScalarConverter();
   ScalarConverter(const ScalarConverter& obj );
   ScalarConverter& operator=(const ScalarConverter& obj );
 
+  static void check_printable(t_printable &p, t_data &d,const std::string& literal);
+  static void print_data(t_printable &p, t_data &d);
 };
