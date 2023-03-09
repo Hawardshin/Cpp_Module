@@ -1,10 +1,10 @@
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME = Serializer
+NAME = Serializerr
 
-SRCS = Serializer.cpp				\
-       main.cpp							\
+SRCS = main.cpp				\
+			 Serializer.cpp	\
 
 RM = rm -rf
 
@@ -29,4 +29,3 @@ re:
 	make all
 
 .PHONY: all clean fclean re
-
