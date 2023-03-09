@@ -57,9 +57,9 @@ void  ScalarConverter::check_printable(t_printable &p, t_data &d,const std::stri
     if (literal != "nan" && literal != "inf" && literal != "nanf" && literal != "inff")
       p.float_flag = false;
   }
-  if (d.int_data != d.double_data)
+  if (static_cast<double>(d.int_data) != d.double_data)
     p.int_flag = false;
-  if (d.char_data != d.double_data)
+  if (static_cast<double>(d.char_data) != d.double_data)
     p.char_flag = false;
 }
 
