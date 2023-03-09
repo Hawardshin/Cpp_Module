@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include <sstream>
+#include <iomanip>
+#include <cmath>
+// #include <sstream>
 #include <limits>
  typedef struct s_printable{
     bool  double_flag;
@@ -16,6 +18,7 @@ typedef struct s_data{
   double double_data;
 }t_data;
 
+//it's static class I will not make instance
 class ScalarConverter
 {
 public:
