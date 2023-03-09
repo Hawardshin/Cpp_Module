@@ -3,9 +3,8 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-// #include <sstream>
 #include <limits>
- typedef struct s_printable{
+typedef struct s_printable{
     bool  double_flag;
     bool  char_flag;
     bool  int_flag;
