@@ -65,10 +65,10 @@ int main(){
 	random_type = generate();
 	identify(my_base);
 	identify(*my_base);
-  std::cout << "==============random===============\n";
+  std::cout << "\n==============random===============\n";
 	identify(random_type);
 	identify(*random_type);
 	delete random_type;
-  std::cout << "-------------done-----------------\n";
+  std::cout << "\n-------------done-----------------\n";
 	return (0);
 }
