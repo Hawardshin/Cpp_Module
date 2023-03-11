@@ -2,5 +2,5 @@
 
 #include "Base.hpp"
 class B : public Base{
-  virtual ~B();
-}
+  public : virtual ~B();
+};
