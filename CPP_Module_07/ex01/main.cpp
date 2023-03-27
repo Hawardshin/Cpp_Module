@@ -1,5 +1,10 @@
 #include "iter.hpp"
 
+void test (int a)
+{
+  std::cout << a << "\n";
+}
+
 int main()
 {
   int test1_array[5] = {1,2,3,4,5};
@@ -8,5 +13,5 @@ int main()
   ::iter(test1_array, 5, test_fuc<int>);
   ::iter(test2_array, 5, test_fuc<char>);
   ::iter(test3_array, 5, test_fuc<std::string>);
-  ::iter(test3_array, 5, test_fuc);
+  std::cout << "\n\n---------------------------------------------------------------\n\n";
 }

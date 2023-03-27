@@ -13,3 +13,4 @@ void  test_fuc(const T& a){
   std::cout << "=============start test fuc ===============\n" \
   << " value : " << a << "\n=============end test fuc =================\n";
 }
+
