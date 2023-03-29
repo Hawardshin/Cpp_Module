@@ -10,44 +10,42 @@ public:
 		len = 1;//is this ok?
 		arr = new T[1];
 	}
-	explicit Array(unsigned int n){
+	explicit Array(const int n){
 		arr = new T[n];
 		len = n;
 	}
 	Array(const Array& obj ){
 		len = obj.len;
 		arr = new T[len];
-		for (unsigned int i=0; i < len;i++){
-			arr[i] = obj[i];
-		}
+		for (size_t i=0; i < len;i++) arr[i] = obj[i];
 	}
-	~Array(){
-		delete arr;
-	}
+	~Array() { delete arr; }
 	Array& operator=(const Array& obj ){
 		delete arr;
 		len = obj.len;
 		arr = new T[len];
-		for (unsigned int i=0; i < len;i++){
-			arr[i] = obj[i];
-		}
+		for (size_t i=0; i < len;i++) arr[i] = obj[i];
 		return (*this);
 	}
 	T &operator[](const int idx){
-		if (idx < 0 || static_cast<unsigned int>(idx) > len) // is this ok?
-		{
-			std::cerr << "idx range is invalid!!!\n";
-			return (-1);
-		}
-	const T& operator[] (std::size_t i) const;
-
+		if (idx < 0 || static_cast<size_t>(idx) > len)
+			throw IndexOutOfRange();
+		return (arr[idx]);
+	}
+	const T& operator[] (const int idx) const{
+		if (idx < 0 || static_cast<size_t>(idx) > len)
+			throw IndexOutOfRange();
+		return (arr[idx])
+	}
+	const size_t size() const {
+		return (len);
 	}
 
 private:
 	T *arr;
-	unsigned int len;
+	size_t len;
 	class IndexOutOfRange: public std::exception{
-		virtual const char* what(void) const throw();
+		virtual const char* what(void) const throw() { return ("idx range is invalid!!!\n"); }
 	};
 
 };
