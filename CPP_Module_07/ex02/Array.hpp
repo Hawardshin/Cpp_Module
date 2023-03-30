@@ -7,37 +7,45 @@ class Array
 {
 public:
 	Array(){
+		std::cout << "[Array Default constructor called]\n";
 		len = 1;//is this ok?
 		arr = new T[1];
 	}
 	explicit Array(const int n){
+		std::cout << "[Array Param constructor called]\n";
 		arr = new T[n];
 		len = n;
 	}
+
 	Array(const Array& obj ){
+		std::cout << "[Array Copy constructor called]\n";
 		len = obj.len;
 		arr = new T[len];
 		for (size_t i=0; i < len;i++) arr[i] = obj[i];
 	}
-	~Array() { delete arr; }
+	~Array() {
+	std::cout << "[Array Destructor called]\n";
+	delete[] arr;
+	}
 	Array& operator=(const Array& obj ){
-		delete arr;
+		std::cout <<"[Array Copy assignment operator called]\n";
+		delete[] arr;
 		len = obj.len;
 		arr = new T[len];
 		for (size_t i=0; i < len;i++) arr[i] = obj[i];
 		return (*this);
 	}
 	T &operator[](const int idx){
-		if (idx < 0 || static_cast<size_t>(idx) > len)
+		if (idx < 0 || static_cast<size_t>(idx) >= len)
 			throw IndexOutOfRange();
 		return (arr[idx]);
 	}
 	const T& operator[] (const int idx) const{
-		if (idx < 0 || static_cast<size_t>(idx) > len)
+		if (idx < 0 || static_cast<size_t>(idx) >= len)
 			throw IndexOutOfRange();
-		return (arr[idx])
+		return (arr[idx]);
 	}
-	const size_t size() const {
+	size_t size() const {
 		return (len);
 	}
 
