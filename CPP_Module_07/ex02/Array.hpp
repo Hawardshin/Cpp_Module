@@ -1,19 +1,16 @@
 #pragma once
 #include <exception>
 #include <iostream>
-//i think I need to think this leaks
 template <typename T>
 class Array
 {
 public:
-	Array(){
+	Array() : len(0), arr(NULL){
 		std::cout << "[Array Default constructor called]\n";
-		len = 1;//is this ok?
-		arr = new T[1];
 	}
 	explicit Array(const int n){
 		std::cout << "[Array Param constructor called]\n";
-		if (n < 0 )
+		if (n <= 0 )
 			throw InvaildRange();
 		arr = new T[n];
 		len = n;
@@ -27,11 +24,15 @@ public:
 	}
 	~Array() {
 	std::cout << "[Array Destructor called]\n";
-	delete[] arr;
+	if (len)
+		delete[] arr;
+	arr= NULL;
+	len = 0;
 	}
 	Array& operator=(const Array& obj ){
 		std::cout <<"[Array Copy assignment operator called]\n";
-		delete[] arr;
+		if (len)
+			delete[] arr;
 		len = obj.len;
 		arr = new T[len];
 		for (size_t i=0; i < len;i++) arr[i] = obj[i];
