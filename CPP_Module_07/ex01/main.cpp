@@ -14,4 +14,5 @@ int main()
   ::iter(test2_array, 5, test_fuc<char>);
   ::iter(test3_array, 5, test_fuc<std::string>);
   std::cout << "\n\n---------------------------------------------------------------\n\n";
+  // system("leaks Iter");
 }

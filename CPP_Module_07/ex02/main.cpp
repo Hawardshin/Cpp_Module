@@ -100,5 +100,6 @@ int main(int, char**)
 			catch(std::exception &e){
 				std::cerr << e.what() << "\n";
 	}
+  // system("leaks Array");
 	return 0;
 }
