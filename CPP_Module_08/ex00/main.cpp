@@ -25,7 +25,7 @@ int main(void) {
     std::cerr << e.what()<< "\n";
   }
   to_find = 10;
-  try{//cannot find;
+  try{//can find first thing
     std::vector<int>::iterator iter = easyfind(my_vec,to_find);
     std::cout << "Value " << *iter << " found on Index "<< std::distance(my_vec.begin(), iter) << "\n";
   }catch(std::exception& e){
