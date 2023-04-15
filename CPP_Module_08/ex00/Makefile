@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME = whatever
+NAME = easyfind
 
 SRCS = main.cpp
 
