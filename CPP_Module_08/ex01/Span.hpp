@@ -21,7 +21,7 @@ public:
   void initNumberRange(unsigned int count) throw (std::out_of_range);
 private:
   Span();
-  void  checkStore() throw (std::out_of_range);
+  void  checkStore() const throw (std::out_of_range);
   void  copyStorage(std::vector<int> &obj) const ;
   std::vector<int> storage;
   unsigned int maxSize;

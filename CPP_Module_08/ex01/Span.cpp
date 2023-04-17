@@ -67,7 +67,7 @@ Span::Span() {
   std::cout <<"[Span Default constructor called]\n\n" ;
 }
 
-void  Span::checkStore()throw (std::out_of_range){
+void  Span::checkStore()const throw (std::out_of_range){
   if (nowSize >= maxSize){
     std::ostringstream oss;
     oss << maxSize;
