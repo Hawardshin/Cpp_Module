@@ -9,24 +9,24 @@ int main(void) {
     my_vec.push_back(10);
     my_deque.push_back(i*10);
   }
-  int to_find = 50;
+  int toFind = 50;
   try {//find check
-    std::deque<int>::iterator iter = easyfind(my_deque, to_find);
+    std::deque<int>::iterator iter = easyfind(my_deque, toFind);
     std::cout << "Value " << *iter << " found on Index "<< std::distance(my_deque.begin(), iter) << "\n";
     std::cout << "Next thing is " << *++iter << "\n";
   } catch (std::exception& e) {
     std::cerr << e.what() << "\n";
   }
-  to_find = -1;
+  toFind = -1;
   try{//cannot find;
-    std::list<int>::iterator iter = easyfind(my_list,to_find);
+    std::list<int>::iterator iter = easyfind(my_list,toFind);
     std::cout << *iter << "\n";
   }catch(std::exception& e){
     std::cerr << e.what()<< "\n";
   }
-  to_find = 10;
+  toFind = 10;
   try{//can find first thing
-    std::vector<int>::iterator iter = easyfind(my_vec,to_find);
+    std::vector<int>::iterator iter = easyfind(my_vec,toFind);
     std::cout << "Value " << *iter << " found on Index "<< std::distance(my_vec.begin(), iter) << "\n";
   }catch(std::exception& e){
     std::cerr << e.what()<< "\n";
