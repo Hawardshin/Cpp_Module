@@ -4,7 +4,6 @@ CFLAGS = -std=c++98 -Wall -Wextra -Werror
 NAME = MutantStack
 
 SRCS = main.cpp	\
-			 Span.cpp
 
 RM = rm -rf
 
