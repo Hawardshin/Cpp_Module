@@ -19,9 +19,7 @@ public:
 	~MutantStack(){}
 	MutantStack& operator=(const MutantStack& obj ){
 		if (this == &obj)
-    {
       return *this;
-    }
     std::stack<T>::operator=(obj);
     return *this;
 	}
