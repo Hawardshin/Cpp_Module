@@ -9,7 +9,7 @@ DiamondTrap::DiamondTrap() :ClapTrap(), FragTrap(), ScavTrap()
 	std::cout <<"[DiamondTrap Default constructor called]\n" <<"You make " << name << "\n\n";
 }
 
-DiamondTrap::DiamondTrap(std::string name) :  ClapTrap(name),FragTrap(),ScavTrap(), name(ClapTrap::name+"_clap_name")
+DiamondTrap::DiamondTrap(std::string name) :  ClapTrap(name+ "_clap_name"),FragTrap(),ScavTrap(),name(name)
 {
 	Hit_points = 100;
 	Energy_points = 50;
