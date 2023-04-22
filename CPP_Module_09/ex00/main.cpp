@@ -6,14 +6,14 @@ const &std::map<string, int> parse_data_base(std::ifstream &input_data) throw(st
   if (Line != "date,exchange_rate\n")
     throw(std::invalid_argument("Error: The database is in an incorrect format\n"))
   while (std::getLine(input_data, Line)){
-    if (Line){
+    std::string date;
+    std::getLine(Line,first,',');
 
-    }
   }
 }
 
 const &std::map<string, int> initData(const int &argc, const char &*argv) throw(std::invalid_argument&, std::runtime_error&){
-   if (argc == 1)
+  if (argc == 1)
     throw std::invalid_argument( "Error: could not open file.\n");
   if (argc != 2)
    throw std::invalid_argument ("Error: argument must be only one!!\n");
