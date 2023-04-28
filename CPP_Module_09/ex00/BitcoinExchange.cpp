@@ -8,6 +8,9 @@ const char* BitcoinExchange::INVALID_LEAP_YEAR_ERROR = "Error: wrong in leap yea
 const char* BitcoinExchange::CSV_STARTLINE_ERROR = "Error: The csv must start date,exchange_rate\n";
 const char* BitcoinExchange::DATE_OVERLAP_ERROR = "Error: The dates overlap!!\n";
 const char* BitcoinExchange::INVALID_DELIMITER = "Error: Invalid delimiter!!\n";
+const char* BitcoinExchange::DATA_STARTLINE_ERROR = "Error: The DATA must start date | value\n";
+const char* BitcoinExchange::BAD_INPUT_ERROR = "Error: bad input =>";
+
 BitcoinExchange::BitcoinExchange() {
 }
 
@@ -30,13 +33,87 @@ void BitcoinExchange::initCsv(const int &argc) throw(std::invalid_argument&, std
    throw std::invalid_argument (ARG_AMOUNT_ERROR_MSG);
   std::ifstream input_csv("data.csv");
   if (!input_csv.is_open())
-    throw std::runtime_error("Error : there is no data\n");
-	parseCsv(input_csv);
+    throw std::runtime_error("Error : there is no csv\n");
+  try{
+    parseCsv(input_csv);
+  }
+	catch(std::exception &e){
+    std::cerr << e.what();
+    input_csv.close();
+    throw(std::invalid_argument(""));
+  }
+}
+
+void	BitcoinExchange::coinToMoney(const char *argv_name) throw(std::invalid_argument&,std::runtime_error&){
+  std::ifstream input_data(argv_name);
+  if (!input_data.is_open())
+    throw std::runtime_error(OPEN_ERROR_MSG);
+  std::string Line;
+  std::getline(input_data, Line);
+  if (Line != "date | value"){
+    input_data.close();
+    throw std::invalid_argument(DATA_STARTLINE_ERROR);
+  }
+  while (std::getline(input_data, Line)){
+    try{
+      coinToMoneyOneLine(Line);
+    }catch(std::exception& e){
+      std::cerr << e.what();
+    }
+  }
+}
+
+void  BitcoinExchange::coinToMoneyOneLine(const std::string &line){
+  size_t position = line.find('|');
+  if (position == std::string::npos)
+    throw(std::invalid_argument((std::string(BAD_INPUT_ERROR) + line).c_str()));
+
 }
 
 
 
+
 //private
+void	BitcoinExchange::parseCsv(std::ifstream &input) throw(std::invalid_argument&){
+  std::string Line;
+  std::getline(input, Line);
+  if (Line != "date,exchange_rate")
+    throw(std::invalid_argument(CSV_STARTLINE_ERROR));
+  while (std::getline(input, Line)){
+		size_t position = Line.find(',');
+		if (position == std::string::npos)
+			throw(std::invalid_argument(INVALID_DELIMITER));
+		std::string key = Line.substr(0, position);
+		IsDateVaild(key);
+		double value = parseValue(Line.substr(position+1));
+		if (csv_data.end() != csv_data.find(key))
+			throw(std::invalid_argument(DATE_OVERLAP_ERROR));
+		csv_data[key] = value;
+  }
+	input.close();
+}
+
+void BitcoinExchange::IsDateVaild(const std::string &s) throw (std::invalid_argument&){
+	//std::cout << "date" << s <<"\n";
+	size_t befpos = 0,position = -1;
+	position = getSepPosition(s,position,befpos);
+	int year = parseDate(s.substr(befpos,position));
+	//std::cout << "year" << year << "\n";
+	position = getSepPosition(s,position,befpos);
+	int month = parseDate(s.substr(befpos,position - befpos));
+  //std::cout << "month" << month << "\n";
+	int day = parseDate(s.substr(position + 1,s.length() - befpos));
+	checkLeapYear(year, month, day);
+}
+
+size_t BitcoinExchange::getSepPosition(const std::string &s,size_t &pos,size_t &befpos) throw (std::invalid_argument&){
+	befpos = pos+1;
+	size_t position = s.find('-',befpos);
+	if (position == std::string::npos || position + 1 == s.length())
+		throw(std::invalid_argument(DATE_INVALID_FORMAT));
+	return (position);
+}
+
 int	BitcoinExchange::parseDate(const std::string &s) throw(std::invalid_argument&){
 	int ret = 0;
 	int len =0;
@@ -50,20 +127,6 @@ int	BitcoinExchange::parseDate(const std::string &s) throw(std::invalid_argument
 	}
 	if (len == 0 || len > 4)
 			throw(std::invalid_argument(DATE_INVALID_FORMAT));
-	return (ret);
-}
-
-double BitcoinExchange::parseDouble(const std::string &s) throw(std::invalid_argument){
-	double ret = std::atof(s.c_str());
-  bool point =false;
-  for (size_t i = 0; i < s.size();i++){
-    if (!std::isdigit(s[i])){
-      if (i != 0 && s[i] == '.'&& !point)
-        point = true;
-      else
-        throw(std::invalid_argument(INVALID_DOUBLE_ERROR));
-    }
-  }
 	return (ret);
 }
 
@@ -101,44 +164,20 @@ void	BitcoinExchange::checkLeapYear(int year, int month, int day) throw(std::inv
 	}
 }
 
-size_t BitcoinExchange::getSepPosition(const std::string &s,size_t &pos,size_t &befpos) throw (std::invalid_argument&){
-	befpos = pos+1;
-	size_t position = s.find('-',befpos);
-	if (position == std::string::npos || position + 1 == s.length())
-		throw(std::invalid_argument(DATE_INVALID_FORMAT));
-	return (position);
-}
-
-void BitcoinExchange::IsDateVaild(const std::string &s) throw (std::invalid_argument&){
-	//std::cout << "date" << s <<"\n";
-	size_t befpos = 0,position = -1;
-	position = getSepPosition(s,position,befpos);
-	int year = parseDate(s.substr(befpos,position));
-	//std::cout << "year" << year << "\n";
-	position = getSepPosition(s,position,befpos);
-	int month = parseDate(s.substr(befpos,position - befpos));
-  //std::cout << "month" << month << "\n";
-	int day = parseDate(s.substr(position + 1,s.length() - befpos));
-	checkLeapYear(year, month, day);
-}
-
-void	BitcoinExchange::parseCsv(std::ifstream &input) throw(std::invalid_argument&){
-  std::string Line;
-  std::getline(input, Line);
-  if (Line != "date,exchange_rate")
-    throw(std::invalid_argument(CSV_STARTLINE_ERROR));
-  while (std::getline(input, Line)){
-		size_t position = Line.find(',');
-		if (position == std::string::npos)
-			throw(std::invalid_argument(INVALID_DELIMITER));
-		std::string key = Line.substr(0, position);
-		IsDateVaild(key);
-		double value = parseDouble(Line.substr(position+1));
-		if (csv_data.end() != csv_data.find(key))
-			throw(std::invalid_argument(DATE_OVERLAP_ERROR));
-		csv_data[key] = value;
+double BitcoinExchange::parseValue(const std::string &s) throw(std::invalid_argument){
+	double ret = std::atof(s.c_str());
+  bool point =false;
+  for (size_t i = 0; i < s.size();i++){
+    if (!std::isdigit(s[i])){
+      if (i != 0 && s[i] == '.'&& !point)
+        point = true;
+      else
+        throw(std::invalid_argument(INVALID_DOUBLE_ERROR));
+    }
   }
-	input.close();
+	return (ret);
 }
+
+
 
 
