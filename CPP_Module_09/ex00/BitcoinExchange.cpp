@@ -7,7 +7,7 @@ const char* BitcoinExchange::INVALID_DOUBLE_ERROR = "Error: Not double type\n";
 const char* BitcoinExchange::INVALID_LEAP_YEAR_ERROR = "Error: wrong in leap years\n";
 const char* BitcoinExchange::CSV_STARTLINE_ERROR = "Error: The csv must start date,exchange_rate\n";
 const char* BitcoinExchange::DATE_OVERLAP_ERROR = "Error: The dates overlap!!\n";
-const char* BitcoinExchange::DATE_OVERLAP_ERROR = "Error: Invalid delimiter!!\n";
+const char* BitcoinExchange::INVALID_DELIMITER = "Error: Invalid delimiter!!\n";
 BitcoinExchange::BitcoinExchange() {
 }
 
@@ -33,6 +33,9 @@ void BitcoinExchange::initCsv(const int &argc) throw(std::invalid_argument&, std
     throw std::runtime_error("Error : there is no data\n");
 	parseCsv(input_csv);
 }
+
+
+
 //private
 int	BitcoinExchange::parseDate(const std::string &s) throw(std::invalid_argument&){
 	int ret = 0;

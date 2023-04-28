@@ -9,9 +9,6 @@
 # include <string>
 # include <stdexcept>
 # include <cstdlib>
-# include <cctype>
-# include <iomanip>
-# include <limits>
 class BitcoinExchange
 {
 public:
@@ -28,6 +25,7 @@ public:
 	BitcoinExchange(const BitcoinExchange& obj);
 	~BitcoinExchange();
 	BitcoinExchange& operator=(const BitcoinExchange& obj );
+	void	coinToMoney() throw(std::invalid_argument&);
 
 	void initCsv(const int &argc) throw(std::invalid_argument&, std::runtime_error&);
 private:
