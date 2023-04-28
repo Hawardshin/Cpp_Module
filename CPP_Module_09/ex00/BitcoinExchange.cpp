@@ -10,6 +10,8 @@ const char* BitcoinExchange::DATE_OVERLAP_ERROR = "Error: The dates overlap!!\n"
 const char* BitcoinExchange::INVALID_DELIMITER = "Error: Invalid delimiter!!\n";
 const char* BitcoinExchange::DATA_STARTLINE_ERROR = "Error: The DATA must start date | value\n";
 const char* BitcoinExchange::BAD_INPUT_ERROR = "Error: bad input =>";
+const char* BitcoinExchange::NOT_POSITIVE_ERROR = "Error: not a positive number.\n";
+const char* BitcoinExchange::TOO_LARGENUM_ERROR = "Error: too large a number.\n";
 
 BitcoinExchange::BitcoinExchange() {
 }
@@ -66,12 +68,23 @@ void	BitcoinExchange::coinToMoney(const char *argv_name) throw(std::invalid_argu
 void  BitcoinExchange::coinToMoneyOneLine(const std::string &line){
   size_t position = line.find('|');
   if (position == std::string::npos)
-    throw(std::invalid_argument((std::string(BAD_INPUT_ERROR) + line).c_str()));
-
+    throw(std::invalid_argument((std::string(BAD_INPUT_ERROR) + line + std::string("\n")).c_str()));
+  std::string key = line.substr(0, position);
+  IsDateVaild(key);
+  double value = parseValue(line.substr(position+1));
+  checkOverFlow(value);
+  if (value > 1000)
+    throw(std::invalid_argument(TOO_LARGENUM_ERROR));
+  std::cout << line << "\n";
+  //날짜가 DB에 있는 날보다 이른 경우 값을 구할 수 없음..!
+  //해결법 : upperbound를 구하는데 그 값이 begin()값과 같으면 구할 수 없도록 한다.
 }
 
-
-
+void  BitcoinExchange::checkOverFlow(double d)throw(std::overflow_error&){
+  int a = d;
+  if (static_cast<double> (a) != std::floor(d))
+    throw std::overflow_error(TOO_LARGENUM_ERROR);
+}
 
 //private
 void	BitcoinExchange::parseCsv(std::ifstream &input) throw(std::invalid_argument&){
@@ -85,6 +98,8 @@ void	BitcoinExchange::parseCsv(std::ifstream &input) throw(std::invalid_argument
 			throw(std::invalid_argument(INVALID_DELIMITER));
 		std::string key = Line.substr(0, position);
 		IsDateVaild(key);
+    //Q. is this ok? if end of line is seperator?
+    //A. ok!!
 		double value = parseValue(Line.substr(position+1));
 		if (csv_data.end() != csv_data.find(key))
 			throw(std::invalid_argument(DATE_OVERLAP_ERROR));
@@ -120,7 +135,11 @@ int	BitcoinExchange::parseDate(const std::string &s) throw(std::invalid_argument
   // std::cout <<"PARSE::::" <<s << "\n";
 	for (std::string::const_iterator it= s.begin(); it != s.end(); it++){
 		if (*it < '0' || *it > '9')
+    {
+      if (len !=0 && *it == ' ' && it == s.end() - 1)//구분자 뒤에 ' '가 있는 경우는 예외로 처리한다.
+        break;
 			throw(std::invalid_argument(DATE_INVALID_FORMAT));
+    }
 		ret *= 10;
 		ret += *it - '0';
 		len++;
@@ -165,11 +184,19 @@ void	BitcoinExchange::checkLeapYear(int year, int month, int day) throw(std::inv
 }
 
 double BitcoinExchange::parseValue(const std::string &s) throw(std::invalid_argument){
-	double ret = std::atof(s.c_str());
+	double ret = std::atof(s.c_str());//공백만 있으면 0 공백이 있으면 밀고 시작.
   bool point =false;
-  for (size_t i = 0; i < s.size();i++){
-    if (!std::isdigit(s[i])){
-      if (i != 0 && s[i] == '.'&& !point)
+  size_t sep_len = 0;
+  while (s[sep_len] == ' '){
+    sep_len++;
+  }
+  for (size_t i = 0;  i+ sep_len < s.size();i++){
+    if (!std::isdigit(s[i + sep_len])){
+      if (i == 0 && s[i + sep_len] == '-')
+        throw(std::invalid_argument(NOT_POSITIVE_ERROR));
+      if (i == 0)
+        throw(std::invalid_argument(INVALID_DOUBLE_ERROR));
+      if (i != 0 && s[i + sep_len] == '.'&& !point)//.이면서 처음 나온경우
         point = true;
       else
         throw(std::invalid_argument(INVALID_DOUBLE_ERROR));
@@ -177,7 +204,3 @@ double BitcoinExchange::parseValue(const std::string &s) throw(std::invalid_argu
   }
 	return (ret);
 }
-
-
-
-
