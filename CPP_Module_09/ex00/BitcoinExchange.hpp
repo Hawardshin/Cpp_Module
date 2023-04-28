@@ -26,6 +26,7 @@ public:
   static const char* BAD_INPUT_ERROR;
   static const char* NOT_POSITIVE_ERROR;
   static const char* TOO_LARGENUM_ERROR;
+  static const char* DATE_TOO_EARLY;
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& obj);
 	~BitcoinExchange();
@@ -47,6 +48,7 @@ private:
 //coin to money
   void  coinToMoneyOneLine(const std::string &line);
   void  checkOverFlow(double d) throw(std::overflow_error&);
+  void  ExchangeMoney(const std::string &_key, const double &value);
 
 };
 

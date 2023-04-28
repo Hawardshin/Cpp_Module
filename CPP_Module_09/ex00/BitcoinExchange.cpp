@@ -9,10 +9,10 @@ const char* BitcoinExchange::CSV_STARTLINE_ERROR = "Error: The csv must start da
 const char* BitcoinExchange::DATE_OVERLAP_ERROR = "Error: The dates overlap!!\n";
 const char* BitcoinExchange::INVALID_DELIMITER = "Error: Invalid delimiter!!\n";
 const char* BitcoinExchange::DATA_STARTLINE_ERROR = "Error: The DATA must start date | value\n";
-const char* BitcoinExchange::BAD_INPUT_ERROR = "Error: bad input =>";
+const char* BitcoinExchange::BAD_INPUT_ERROR = "Error: bad input => ";
 const char* BitcoinExchange::NOT_POSITIVE_ERROR = "Error: not a positive number.\n";
 const char* BitcoinExchange::TOO_LARGENUM_ERROR = "Error: too large a number.\n";
-
+const char* BitcoinExchange::DATE_TOO_EARLY = "Error: the date is too early so cannot calulate\n";
 BitcoinExchange::BitcoinExchange() {
 }
 
@@ -75,9 +75,20 @@ void  BitcoinExchange::coinToMoneyOneLine(const std::string &line){
   checkOverFlow(value);
   if (value > 1000)
     throw(std::invalid_argument(TOO_LARGENUM_ERROR));
-  std::cout << line << "\n";
+  ExchangeMoney(key,value);
   //날짜가 DB에 있는 날보다 이른 경우 값을 구할 수 없음..!
   //해결법 : upperbound를 구하는데 그 값이 begin()값과 같으면 구할 수 없도록 한다.
+}
+
+void  BitcoinExchange::ExchangeMoney(const std::string &key, const double &value){
+  std::map<std::string,double>::iterator it = csv_data.upper_bound(key);
+  if (it == csv_data.begin())
+    throw(DATE_TOO_EARLY);
+  it--;
+  // std::ostringstream strs;
+  // strs << (it->second * value);
+  std::cout << key << " => " << it->second * value << "\n";
+  // std::cout << key +std::string(" => ")+ strs.str() + std::string("\n");
 }
 
 void  BitcoinExchange::checkOverFlow(double d)throw(std::overflow_error&){
