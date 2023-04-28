@@ -1,7 +1,7 @@
 # include "BitcoinExchange.hpp"
 //TO DO
-// 1. Error message Define
-// 2.
+//error msg standard out put
+//error test
 int main(int argc, char *argv[]){
 	BitcoinExchange test;
 	try{

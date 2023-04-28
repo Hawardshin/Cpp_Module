@@ -13,18 +13,14 @@ const char* BitcoinExchange::BAD_INPUT_ERROR = "Error: bad input => ";
 const char* BitcoinExchange::NOT_POSITIVE_ERROR = "Error: not a positive number.\n";
 const char* BitcoinExchange::TOO_LARGENUM_ERROR = "Error: too large a number.\n";
 const char* BitcoinExchange::DATE_TOO_EARLY = "Error: the date is too early so cannot calulate\n";
-BitcoinExchange::BitcoinExchange() {
-}
+BitcoinExchange::BitcoinExchange() {}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) {
-	csv_data = obj.csv_data;
-}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) {csvData = obj.csvData;}
 
-BitcoinExchange::~BitcoinExchange() {
-}
+BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj){
-	csv_data = obj.csv_data;
+	csvData = obj.csvData;
 	return (*this);
 }
 
@@ -81,8 +77,8 @@ void  BitcoinExchange::coinToMoneyOneLine(const std::string &line){
 }
 
 void  BitcoinExchange::ExchangeMoney(const std::string &key, const double &value){
-  std::map<std::string,double>::iterator it = csv_data.upper_bound(key);
-  if (it == csv_data.begin())
+  std::map<std::string,double>::iterator it = csvData.upper_bound(key);
+  if (it == csvData.begin())
     throw(DATE_TOO_EARLY);
   it--;
   // std::ostringstream strs;
@@ -112,9 +108,9 @@ void	BitcoinExchange::parseCsv(std::ifstream &input) throw(std::invalid_argument
     //Q. is this ok? if end of line is seperator?
     //A. ok!!
 		double value = parseValue(Line.substr(position+1));
-		if (csv_data.end() != csv_data.find(key))
+		if (csvData.end() != csvData.find(key))
 			throw(std::invalid_argument(DATE_OVERLAP_ERROR));
-		csv_data[key] = value;
+		csvData[key] = value;
   }
 	input.close();
 }

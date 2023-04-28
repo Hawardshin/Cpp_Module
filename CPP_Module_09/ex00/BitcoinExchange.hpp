@@ -35,7 +35,7 @@ public:
 	void initCsv(const int &argc) throw(std::invalid_argument&, std::runtime_error&);
 	void	coinToMoney(const char *argv_name) throw(std::invalid_argument&,std::runtime_error&);
 private:
-	std::map<std::string, double> csv_data;
+	std::map<std::string, double> csvData;
 
   //parse csv
 	void parseCsv(std::ifstream &input) throw(std::invalid_argument&);
@@ -49,7 +49,6 @@ private:
   void  coinToMoneyOneLine(const std::string &line);
   void  checkOverFlow(double d) throw(std::overflow_error&);
   void  ExchangeMoney(const std::string &_key, const double &value);
-
 };
 
 #endif
