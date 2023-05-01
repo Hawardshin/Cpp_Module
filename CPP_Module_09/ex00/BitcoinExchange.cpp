@@ -197,6 +197,8 @@ double BitcoinExchange::parseValue(const std::string &s) throw(std::invalid_argu
   while (s[sep_len] == ' '){
     sep_len++;
   }
+  if (s[sep_len]== '\0')
+    throw(std::invalid_argument(INVALID_DOUBLE_ERROR));
   for (size_t i = 0;  i+ sep_len < s.size();i++){
     if (!std::isdigit(s[i + sep_len])){
       if (i == 0 && s[i + sep_len] == '-')
@@ -208,6 +210,12 @@ double BitcoinExchange::parseValue(const std::string &s) throw(std::invalid_argu
       else
         throw(std::invalid_argument(INVALID_DOUBLE_ERROR));
     }
+  }
+  try{
+    checkOverFlow(ret);
+  }
+  catch(std::exception &e){
+    throw(std::invalid_argument(""));
   }
 	return (ret);
 }

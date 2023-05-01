@@ -13,4 +13,7 @@ enum e_operator{
   MUL,
 };
 
+enum e_operator computable_operator(const char& c);
+double calculate(const double& x,const double& y, const char &oper);
+double my_pop(std::stack<double>& s);
 #endif
