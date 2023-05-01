@@ -79,11 +79,11 @@ void  BitcoinExchange::coinToMoneyOneLine(const std::string &line){
 void  BitcoinExchange::ExchangeMoney(const std::string &key, const double &value){
   std::map<std::string,double>::iterator it = csvData.upper_bound(key);
   if (it == csvData.begin())
-    throw(DATE_TOO_EARLY);
+    throw(std::invalid_argument(DATE_TOO_EARLY));
   it--;
   // std::ostringstream strs;
   // strs << (it->second * value);
-  std::cout << key << " => " << it->second * value << "\n";
+  std::cout << key<<  " => " << value << " = " << it->second * value << "\n";
   // std::cout << key +std::string(" => ")+ strs.str() + std::string("\n");
 }
 
