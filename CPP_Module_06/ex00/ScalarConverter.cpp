@@ -52,7 +52,7 @@ void  ScalarConverter::check_printable(t_printable &p, t_data &d,const std::stri
   d.int_data = static_cast<int>(d.double_data);
   d.char_data = static_cast<char>(d.double_data);
   d.float_data = static_cast<float>(d.double_data);
-  if (d.double_data < std::numeric_limits<float>::lowest() || d.double_data > std::numeric_limits<float>::max() )
+  if (d.double_data < - (std::numeric_limits<float>::max()) || d.double_data > std::numeric_limits<float>::max() )
   {
     if (literal != "nan" && literal != "inf" && literal != "nanf" && literal != "inff")
       p.float_flag = false;
